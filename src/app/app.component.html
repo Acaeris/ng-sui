@@ -1,20 +1,203 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<sui-container style="margin-top: 2em;">
+  <h1 sui-header>Ng-Sui Element Tests</h1>
+  <h2 sui-header>Buttons</h2>
+  <sui-button>A Button</sui-button>
+  <h4 sui-header>Active</h4>
+  <sui-button active>Active</sui-button>
+  <h4 sui-header>Attached</h4>
+  <sui-button attached="top">Top</sui-button>
+  <div class="ui attached segment">
+    <p>This is a test segment for attaching</p>
+  </div>
+  <sui-button attached="bottom">Bottom</sui-button>
+  <sui-button attached="left">Left</sui-button>
+  <sui-button attached="right">Right</sui-button>
+  <h4 sui-header>Animated</h4>
+  <sui-button animated>
+    <div class="visible content">Next</div>
+    <div class="hidden content">
+      <i sui-icon="right arrow"></i>
+    </div>
+  </sui-button>
+  <sui-button animated="vertical">
+    <div class="visible content">Next</div>
+    <div class="hidden content">
+      <i sui-icon="right arrow"></i>
+    </div>
+  </sui-button>
+  <sui-button animated="fade">
+    <div class="visible content">Next</div>
+    <div class="hidden content">
+      <i sui-icon="right arrow"></i>
+    </div>
+  </sui-button>
+  <h4 sui-header>Basic</h4>
+  <sui-button basic>Basic</sui-button>
+  <sui-button basic color="primary">Primary</sui-button>
+  <sui-button basic color="secondary">Secondary</sui-button>
+  <sui-button basic color="positive">Positive</sui-button>
+  <sui-button basic color="negative">Negative</sui-button>
+  <sui-button basic color="red">Red</sui-button>
+  <sui-button basic color="orange">Orange</sui-button>
+  <sui-button basic color="yellow">Yellow</sui-button>
+  <sui-button basic color="olive">Olive</sui-button>
+  <sui-button basic color="green">Green</sui-button>
+  <sui-button basic color="teal">Teal</sui-button>
+  <sui-button basic color="blue">Blue</sui-button>
+  <sui-button basic color="violet">Violet</sui-button>
+  <sui-button basic color="purple">Purple</sui-button>
+  <sui-button basic color="pink">Pink</sui-button>
+  <sui-button basic color="brown">Brown</sui-button>
+  <sui-button basic color="grey">Grey</sui-button>
+  <sui-button basic color="black">Black</sui-button>
+  <h4 sui-header>Branding</h4>
+  <sui-button color="facebook" icon="facebook">Facebook</sui-button>
+  <sui-button color="twitter" icon="twitter">Twitter</sui-button>
+  <sui-button color="google plus" icon="google plus">Google Plus</sui-button>
+  <sui-button color="vk" icon="vk">VK</sui-button>
+  <sui-button color="linkedin" icon="linkedin">LinkedIn</sui-button>
+  <sui-button color="instagram" icon="instagram">Instagram</sui-button>
+  <sui-button color="youtube" icon="youtube">YouTube</sui-button>
+  <h4 sui-header>Colours</h4>
+  <sui-button color="primary">Primary</sui-button>
+  <sui-button color="secondary">Secondary</sui-button>
+  <sui-button color="positive">Positive</sui-button>
+  <sui-button color="negative">Negative</sui-button>
+  <sui-button color="red">Red</sui-button>
+  <sui-button color="orange">Orange</sui-button>
+  <sui-button color="yellow">Yellow</sui-button>
+  <sui-button color="olive">Olive</sui-button>
+  <sui-button color="green">Green</sui-button>
+  <sui-button color="teal">Teal</sui-button>
+  <sui-button color="blue">Blue</sui-button>
+  <sui-button color="violet">Violet</sui-button>
+  <sui-button color="purple">Purple</sui-button>
+  <sui-button color="pink">Pink</sui-button>
+  <sui-button color="brown">Brown</sui-button>
+  <sui-button color="grey">Grey</sui-button>
+  <sui-button color="black">Black</sui-button>
+  <h4 sui-header>Circular</h4>
+  <sui-button circular icon="heart"></sui-button>
+  <sui-button circular color="black" icon="apple"></sui-button>
+  <sui-button basic circular color="red" icon="marker"></sui-button>
+  <sui-button circular>With Text</sui-button>
+  <h4 sui-header>Compact</h4>
+  <sui-button compact>Compact</sui-button>
+  <h4 sui-header>Disabled</h4>
+  <sui-button disabled>Disabled</sui-button>
+  <h4 sui-header>Flags</h4>
+  <sui-button flag="gb">United Kingdom</sui-button>
+  <sui-button flag="us">United States</sui-button>
+  <h4 sui-header>Float</h4>
+  <sui-button float="right">Right Floated</sui-button>
+  <sui-button float="left">Left Floated</sui-button>
+  <div sui-divider clearing></div>
+  <h4 sui-header>Fluid</h4>
+  <sui-button fluid>Fluid</sui-button>
+  <h4 sui-header>Icons</h4>
+  <sui-button icon="lab">With Icons</sui-button>
+  <h4 sui-header>Inverted</h4>
+  <div class="ui inverted segment">
+    <sui-button inverted>Inverted</sui-button>
+    <sui-button inverted color="primary">Primary</sui-button>
+    <sui-button inverted color="secondary">Secondary</sui-button>
+    <sui-button inverted color="positive">Positive</sui-button>
+    <sui-button inverted color="negative">Negative</sui-button>
+    <sui-button inverted color="red">Red</sui-button>
+    <sui-button inverted color="orange">Orange</sui-button>
+    <sui-button inverted color="yellow">Yellow</sui-button>
+    <sui-button inverted color="olive">Olive</sui-button>
+    <sui-button inverted color="green">Green</sui-button>
+    <sui-button inverted color="teal">Teal</sui-button>
+    <sui-button inverted color="blue">Blue</sui-button>
+    <sui-button inverted color="violet">Violet</sui-button>
+    <sui-button inverted color="purple">Purple</sui-button>
+    <sui-button inverted color="pink">Pink</sui-button>
+    <sui-button inverted color="brown">Brown</sui-button>
+    <sui-button inverted color="grey">Grey</sui-button>
+    <sui-button inverted color="black">Black</sui-button>
+    <sui-button inverted basic>Inverted Basic</sui-button>
+    <sui-button inverted basic color="primary">Primary</sui-button>
+    <sui-button inverted basic color="secondary">Secondary</sui-button>
+    <sui-button inverted basic color="positive">Positive</sui-button>
+    <sui-button inverted basic color="negative">Negative</sui-button>
+    <sui-button inverted basic color="red">Red</sui-button>
+    <sui-button inverted basic color="orange">Orange</sui-button>
+    <sui-button inverted basic color="yellow">Yellow</sui-button>
+    <sui-button inverted basic color="olive">Olive</sui-button>
+    <sui-button inverted basic color="green">Green</sui-button>
+    <sui-button inverted basic color="teal">Teal</sui-button>
+    <sui-button inverted basic color="blue">Blue</sui-button>
+    <sui-button inverted basic color="violet">Violet</sui-button>
+    <sui-button inverted basic color="purple">Purple</sui-button>
+    <sui-button inverted basic color="pink">Pink</sui-button>
+    <sui-button inverted basic color="brown">Brown</sui-button>
+    <sui-button inverted basic color="grey">Grey</sui-button>
+    <sui-button inverted basic color="black">Black</sui-button>
+  </div>
+  <h4 sui-header>Labelled</h4>
+  <sui-button label="left">
+    <a class="ui basic label">2,048</a>
+    <sui-button icon="heart">Like</sui-button>
+  </sui-button>
+  <sui-button label="right">
+    <sui-button icon="heart">Like</sui-button>
+    <a class="ui basic left pointing label">2,048</a>
+  </sui-button>
+  <h4 sui-header>Loading</h4>
+  <sui-button loading>Loading</sui-button>
+  <h4 sui-header>Sizes</h4>
+  <sui-button size="mini">Mini</sui-button>
+  <sui-button size="tiny">Tiny</sui-button>
+  <sui-button size="small">Small</sui-button>
+  <sui-button size="medium">Medium</sui-button>
+  <sui-button size="large">Large</sui-button>
+  <sui-button size="big">Big</sui-button>
+  <sui-button size="huge">Huge</sui-button>
+  <sui-button size="massive">Massive</sui-button>
+  <h4 sui-header>Toggle</h4>
+  <sui-button toggle>Toggle</sui-button>
+  <h2 sui-header>Divider</h2>
+  <div sui-divider></div>
+  <h4 sui-header>Labeled</h4>
+  <div sui-divider label="Labeled"></div>
+  <h4 sui-header>Icons</h4>
+  <div sui-divider label="Description" icon="globe"></div>
+  <h4 sui-header>Clearing</h4>
+  <sui-button float="right">Right Floated</sui-button>
+  <sui-button float="left">Left Floated</sui-button>
+  <div sui-divider clearing label="Clearing"></div>
+  <h4 sui-header>Fitted</h4>
+  <p>Some test text</p>
+  <div sui-divider fitted></div>
+  <p>The divider should be tightly fitted between the paragraphs</p>
+  <h4 sui-header>Hidden</h4>
+  <p>Some test text</p>
+  <div sui-divider hidden></div>
+  <p>The divider should be hidden between the paragraphs</p>
+  <h4 sui-header>Inverted</h4>
+  <div class="ui inverted segment">
+    <div sui-divider label="Inverted" inverted></div>
+    <div sui-divider label="Description" inverted icon="globe"></div>
+  </div>
+  <h4 sui-header>Section</h4>
+  <p>Some test text</p>
+  <div sui-divider section></div>
+  <p>The section divider has greater margins</p>
+  <h2 sui-header>Header</h2>
+  <h4 sui-header>Page Header Size</h4>
+  <p>Page Headers have static size set using the header hierarchy (h1, h2, h3, h4, h5, h6)</p>
+  <h1 sui-header>First Header</h1>
+  <h2 sui-header>Second Header</h2>
+  <h3 sui-header>Third Header</h3>
+  <h4 sui-header>Fourth Header</h4>
+  <h5 sui-header>Fifth Header</h5>
+  <h6 sui-header>Sixth Header</h6>
+  <h4 sui-header>Content Header Size</h4>
+  <p>Content headers have relative sizes using the size parameter</p>
+  <sui-header size="huge">Huge Header</sui-header>
+  <sui-header size="large">Large Header</sui-header>
+  <sui-header size="medium">Medium Header</sui-header>
+  <sui-header size="small">Small Header</sui-header>
+  <sui-header size="tiny">Tiny Header</sui-header>
+</sui-container>
