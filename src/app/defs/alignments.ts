@@ -1,2 +1,3 @@
-export type SemanticTextAlignments = 'left' | 'center' | 'right' | 'justified';
+export type SemanticHorizontalAlignments = 'left' | 'center' | 'right';
 export type SemanticVerticalAlignments = 'top' | 'middle' | 'bottom';
+export type SemanticTextAlignments = SemanticHorizontalAlignments | 'justified';

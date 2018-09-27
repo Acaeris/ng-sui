@@ -8,6 +8,7 @@ import {
   HostBinding
 } from '@angular/core';
 
+import { SemanticHorizontalAlignments } from '../../../defs/alignments';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSizes } from '../../../defs/sizes';
 
@@ -25,7 +26,7 @@ import { SemanticSizes } from '../../../defs/sizes';
 export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
-  @Input() align?: "" | "left" | "center" | "right";
+  @Input() align?: "" | SemanticHorizontalAlignments;
   @Input() attached?: "" | 'top' | 'bottom';
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
@@ -58,7 +59,7 @@ export class SemanticHeaderComponent implements OnChanges {
     if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if (this.hasValue(this.align)) {
+    if ("undefined" !== typeof this.align) {
       this.renderer.addClass(this.el.nativeElement, this.align);
       this.renderer.addClass(this.el.nativeElement, 'aligned');
     }

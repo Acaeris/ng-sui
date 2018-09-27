@@ -205,17 +205,15 @@ export class SemanticButtonsComponent implements OnChanges {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if ("undefined" !== typeof this.attached) {
-      if ("" !== this.attached) {
-        this.renderer.addClass(this.el.nativeElement, this.attached);
-      }
+    if (this.hasValue(this.attached)) {
+      this.renderer.addClass(this.el.nativeElement, this.attached);
       this.renderer.addClass(this.el.nativeElement, 'attached');
     }
-    if ("undefined" !== typeof this.float) {
+    if (this.hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
       this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-    if ("undefined" !== typeof this.size) {
+    if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
     if ("undefined" !== typeof this.width) {
@@ -225,5 +223,9 @@ export class SemanticButtonsComponent implements OnChanges {
 
   isPresent(key?: boolean) {
     return "undefined" !== typeof key && !key;
+  }
+
+  hasValue(key?: string) {
+    return "undefined" !== typeof key && key !== "";
   }
 }
