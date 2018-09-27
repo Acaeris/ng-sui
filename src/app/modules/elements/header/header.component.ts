@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ElementRef,
   Renderer2,
+  OnInit,
   OnChanges,
   HostBinding
 } from '@angular/core';
