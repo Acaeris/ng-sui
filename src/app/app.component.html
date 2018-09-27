@@ -1,18 +1,17 @@
 <sui-container style="margin-top: 2em;">
   <h1 sui-header>Ng-Sui Element Tests</h1>
-  <h2 sui-header>Buttons</h2>
-  <sui-button>A Button</sui-button>
-  <h4 sui-header>Active</h4>
-  <sui-button active>Active</sui-button>
-  <h4 sui-header>Attached</h4>
-  <sui-button attached="top">Top</sui-button>
-  <div class="ui attached segment">
-    <p>This is a test segment for attaching</p>
-  </div>
-  <sui-button attached="bottom">Bottom</sui-button>
-  <sui-button attached="left">Left</sui-button>
-  <sui-button attached="right">Right</sui-button>
+  <h2 sui-header>Button</h2>
+  <p>A standard button</p>
+  <sui-button>Follow</sui-button>
+  <h4 sui-header>Emphasis</h4>
+  <p>A button can be formatted to show different levels of emphasis.</p>
+  <sui-button color="primary">Save</sui-button>
+  <sui-button>Discard</sui-button>
+  <p>&nbsp;</p>
+  <sui-button color="secondary">Okay</sui-button>
+  <sui-button>Cancel</sui-button>
   <h4 sui-header>Animated</h4>
+  <p>A button can animate to show hidden content</p>
   <sui-button animated>
     <div class="visible content">Next</div>
     <div class="hidden content">
@@ -31,12 +30,41 @@
       <i sui-icon="right arrow"></i>
     </div>
   </sui-button>
+  <h4 sui-header>Labelled</h4>
+  <p>A button can appear alongside a label.</p>
+  <sui-button label="right">
+    <sui-button icon="heart">Like</sui-button>
+    <a class="ui basic label">2,048</a>
+  </sui-button>
+  <sui-button label="left">
+    <a class="ui basic right pointing label">2,048</a>
+    <sui-button icon="heart">Like</sui-button>
+  </sui-button>
+  <p>&nbsp;</p>
+  <sui-button label="right">
+    <sui-button icon="heart" color="red">Like</sui-button>
+    <a class="ui basic red left pointing label">1,048</a>
+  </sui-button>
+  <sui-button label="right">
+    <sui-button basic icon="fork" color="blue">Forks</sui-button>
+    <a class="ui basic left pointing blue label">1,048</a>
+  </sui-button>
+  <h4 sui-header>Icon</h4>
+  <p>A button can have only an icon</p>
+  <sui-button icon="cloud"></sui-button>
+  <h4 sui-header>Labeled Icon</h4>
+  <p>A button can use an icon as a label</p>
+  <sui-button label="left" icon="pause">Pause</sui-button>
+  <sui-button label="right" icon="right arrow">Next</sui-button>
   <h4 sui-header>Basic</h4>
-  <sui-button basic>Basic</sui-button>
+  <p>A basic button is less pronounced</p>
+  <sui-button basic icon="user">Add Friend</sui-button>
+  <p>&nbsp;</p>
   <sui-button basic color="primary">Primary</sui-button>
   <sui-button basic color="secondary">Secondary</sui-button>
   <sui-button basic color="positive">Positive</sui-button>
   <sui-button basic color="negative">Negative</sui-button>
+  <p>&nbsp;</p>
   <sui-button basic color="red">Red</sui-button>
   <sui-button basic color="orange">Orange</sui-button>
   <sui-button basic color="yellow">Yellow</sui-button>
@@ -50,6 +78,17 @@
   <sui-button basic color="brown">Brown</sui-button>
   <sui-button basic color="grey">Grey</sui-button>
   <sui-button basic color="black">Black</sui-button>
+  <h4 sui-header>Active</h4>
+  <sui-button active>Active</sui-button>
+  <h4 sui-header>Attached</h4>
+  <sui-button attached="top">Top</sui-button>
+  <div class="ui attached segment">
+    <p>This is a test segment for attaching</p>
+  </div>
+  <sui-button attached="bottom">Bottom</sui-button>
+  <sui-button attached="left">Left</sui-button>
+  <sui-button attached="right">Right</sui-button>
+
   <h4 sui-header>Branding</h4>
   <sui-button color="facebook" icon="facebook">Facebook</sui-button>
   <sui-button color="twitter" icon="twitter">Twitter</sui-button>
@@ -135,15 +174,6 @@
     <sui-button inverted basic color="grey">Grey</sui-button>
     <sui-button inverted basic color="black">Black</sui-button>
   </div>
-  <h4 sui-header>Labelled</h4>
-  <sui-button label="left">
-    <a class="ui basic label">2,048</a>
-    <sui-button icon="heart">Like</sui-button>
-  </sui-button>
-  <sui-button label="right">
-    <sui-button icon="heart">Like</sui-button>
-    <a class="ui basic left pointing label">2,048</a>
-  </sui-button>
   <h4 sui-header>Loading</h4>
   <sui-button loading>Loading</sui-button>
   <h4 sui-header>Sizes</h4>
