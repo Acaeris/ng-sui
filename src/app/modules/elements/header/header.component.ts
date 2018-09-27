@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   ElementRef,
   Renderer2,
-  OnInit,
   OnChanges,
   HostBinding
 } from '@angular/core';
@@ -74,19 +73,17 @@ export class SemanticHeaderComponent implements OnChanges {
   templateUrl: './header.component.html',
   host: { 'class' : 'ui sub header' }
 })
-export class SemanticSubheaderComponent implements OnInit {
-  @Input('icon') icon: string = "";
-  @Input('disabled') disabled: string = "false";
-  @HostBinding('class.icon') iconEnabled: boolean = false;
-  @HostBinding('class.disabled') classDisabled: boolean = false;
+export class SemanticSubheaderComponent implements OnChanges {
+  @Input('icon') icon?: string;
+  @Input('disabled') disabled?: boolean;
+  @HostBinding('class.disabled')
+  get isDisabled() {
+    return this.isPresent(this.disabled);
+  }
 
   constructor() { }
 
-  ngOnInit() {
-    this.classDisabled = (this.disabled === "true" || this.disabled === "");
-    if ("" !== this.icon) {
-      this.iconEnabled = true;
-    }
+  ngOnChanges() {
   }
 
   isPresent(key?: boolean) {
