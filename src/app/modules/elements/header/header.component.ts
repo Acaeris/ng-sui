@@ -25,6 +25,7 @@ import { SemanticSizes } from '../../../defs/sizes';
 export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
+  @Input() align?: "" | "left" | "center" | "right";
   @Input() attached?: "" | 'top' | 'bottom';
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
@@ -38,27 +39,37 @@ export class SemanticHeaderComponent implements OnChanges {
   get isDisabled() {
     return this.isPresent(this.disabled);
   }
+  @HostBinding('class.icon')
+  get isIconHeader() {
+    return this.hasValue(this.icon);
+  }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if ("undefined" !== typeof this.attached) {
-      if ("" !== this.attached) {
-        this.renderer.addClass(this.el.nativeElement, this.attached);
-      }
+    if (this.hasValue(this.attached)) {
+      this.renderer.addClass(this.el.nativeElement, this.attached);
       this.renderer.addClass(this.el.nativeElement, 'attached');
     }
-    var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
+    var colors: string[] = (this.hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
-    if ("undefined" !== typeof this.size) {
+    if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
+    }
+    if (this.hasValue(this.align)) {
+      this.renderer.addClass(this.el.nativeElement, this.align);
+      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
   }
 
   isPresent(key?: boolean) {
     return "undefined" !== typeof key && !key;
+  }
+
+  hasValue(key?: string) {
+    return "undefined" !== typeof key && key !== "";
   }
 }
 
