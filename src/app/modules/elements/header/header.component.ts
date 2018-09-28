@@ -30,10 +30,12 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() align?: "" | SemanticHorizontalAlignments;
   @Input() float?: "" | "left" | "right";
   @Input() attached?: "" | 'top' | 'bottom';
+  @Input() bulleted?: boolean;
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
   @Input() disabled?: boolean;
   @Input() size?: SemanticSizes;
+  @Input() sub?: string;
   @HostBinding('class.block')
   get isBlock() {
     return this.isPresent(this.block);
@@ -44,7 +46,7 @@ export class SemanticHeaderComponent implements OnChanges {
   }
   @HostBinding('class.icon')
   get isIconHeader() {
-    return this.hasValue(this.icon);
+    return this.hasValue(this.icon) && !this.isPresent(this.bulleted);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
@@ -89,14 +91,19 @@ export class SemanticHeaderComponent implements OnChanges {
   selector: '[sui-subheader], sui-subheader',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './header.component.html',
-  host: { 'class' : 'ui sub header' }
+  host: { 'class' : 'sub header' }
 })
 export class SemanticSubheaderComponent implements OnChanges {
   @Input('icon') icon?: string;
+  @Input('child') child?: boolean;
   @Input('disabled') disabled?: boolean;
   @HostBinding('class.disabled')
   get isDisabled() {
     return this.isPresent(this.disabled);
+  }
+  @HostBinding('class.ui')
+  get isNotChild() {
+    return !this.isPresent(this.child);
   }
 
   constructor() { }
