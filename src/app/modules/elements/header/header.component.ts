@@ -31,6 +31,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() float?: "" | "left" | "right";
   @Input() attach?: "" | "both" | "top" | "bottom";
   @Input() bulleted?: boolean;
+  @Input() inverted?: boolean;
   @Input() dividing?: boolean;
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
@@ -52,6 +53,10 @@ export class SemanticHeaderComponent implements OnChanges {
   @HostBinding('class.dividing')
   get isDividing() {
     return this.isPresent(this.dividing);
+  }
+  @HostBinding('class.inverted')
+  get isInverted() {
+    return this.isPresent(this.inverted);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
