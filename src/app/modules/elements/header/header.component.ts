@@ -31,6 +31,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() float?: "" | "left" | "right";
   @Input() attached?: "" | 'top' | 'bottom';
   @Input() bulleted?: boolean;
+  @Input() dividing?: boolean;
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
   @Input() disabled?: boolean;
@@ -47,6 +48,10 @@ export class SemanticHeaderComponent implements OnChanges {
   @HostBinding('class.icon')
   get isIconHeader() {
     return this.hasValue(this.icon) && !this.isPresent(this.bulleted);
+  }
+  @HostBinding('class.dividing')
+  get isDividing() {
+    return this.isPresent(this.dividing);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
