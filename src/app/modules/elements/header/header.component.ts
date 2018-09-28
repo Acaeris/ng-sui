@@ -29,7 +29,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() image?: string;
   @Input() align?: "" | SemanticHorizontalAlignments;
   @Input() float?: "" | "left" | "right";
-  @Input() attached?: "" | 'top' | 'bottom';
+  @Input() attach?: "" | "both" | "top" | "bottom";
   @Input() bulleted?: boolean;
   @Input() dividing?: boolean;
   @Input() block?: boolean;
@@ -57,8 +57,10 @@ export class SemanticHeaderComponent implements OnChanges {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.attached)) {
-      this.renderer.addClass(this.el.nativeElement, this.attached);
+    if (this.hasValue(this.attach)) {
+      if ("both" !== this.attach) {
+        this.renderer.addClass(this.el.nativeElement, this.attach);
+      }
       this.renderer.addClass(this.el.nativeElement, 'attached');
     }
     var colors: string[] = (this.hasValue(this.color)) ? this.color.split(" ") : [];
