@@ -25,6 +25,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
+  @Input('bordered') bordered?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('attr.src')
@@ -42,6 +43,10 @@ export class SemanticImageAttrComponent implements OnChanges {
   @HostBinding('class.avatar')
   get isAvatar() {
     return this.isPresent(this.avatar);
+  }
+  @HostBinding('class.bordered')
+  get isBordered() {
+    return this.isPresent(this.bordered);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -76,6 +81,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
+  @Input('bordered') bordered?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -89,6 +95,10 @@ export class SemanticImageComponent implements OnChanges {
   @HostBinding('class.avatar')
   get isAvatar() {
     return this.isPresent(this.avatar);
+  }
+  @HostBinding('class.bordered')
+  get isBordered() {
+    return this.isPresent(this.bordered);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -123,6 +133,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
+  @Input('bordered') bordered?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -136,6 +147,10 @@ export class SemanticSVGComponent implements OnChanges {
   @HostBinding('class.avatar')
   get isAvatar() {
     return this.isPresent(this.avatar);
+  }
+  @HostBinding('class.bordered')
+  get isBordered() {
+    return this.isPresent(this.bordered);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
