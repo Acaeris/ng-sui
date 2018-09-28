@@ -29,6 +29,7 @@ export class SemanticDividerComponent {
   @Input() hidden?: boolean;
   @Input() inverted?: boolean;
   @Input() section?: boolean;
+  @Input() vertical?: boolean;
   @HostBinding('class.clearing')
   get isClearing() {
     return this.isPresent(this.clearing);
@@ -42,9 +43,9 @@ export class SemanticDividerComponent {
     return this.isPresent(this.hidden);
   }
   @HostBinding('class.horizontal')
-  get hasLabel() {
-    return "undefined" !== typeof this.label && "" !== this.label;
-  };
+  get isHorizontal() {
+    return !this.isPresent(this.vertical) && this.hasValue(this.label);
+  }
   @HostBinding('class.inverted')
   get isInverted() {
     return this.isPresent(this.inverted);
@@ -53,10 +54,18 @@ export class SemanticDividerComponent {
   get isSection() {
     return this.isPresent(this.section);
   }
+  @HostBinding('class.vertical')
+  get isVertical() {
+    return this.isPresent(this.vertical);
+  }
 
   constructor() { }
 
   isPresent(key?: boolean) {
     return "undefined" !== typeof key && !key;
+  }
+
+  hasValue(key?: string) {
+    return "undefined" !== typeof key && key !== "";
   }
 }
