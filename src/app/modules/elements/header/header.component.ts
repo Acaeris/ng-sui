@@ -71,8 +71,12 @@ export class SemanticHeaderComponent implements OnChanges {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
     if ("undefined" !== typeof this.align) {
-      this.renderer.addClass(this.el.nativeElement, this.align);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
+      if ("justify" === this.align) {
+        this.renderer.addClass(this.el.nativeElement, 'justified');
+      } else {
+        this.renderer.addClass(this.el.nativeElement, this.align);
+        this.renderer.addClass(this.el.nativeElement, 'aligned');
+      }
     }
     if (this.hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
