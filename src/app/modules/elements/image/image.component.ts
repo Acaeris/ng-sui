@@ -28,6 +28,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('bordered') bordered?: boolean;
   @Input('fluid') fluid?: boolean;
   @Input('rounded') rounded?: boolean;
+  @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('attr.src')
@@ -57,6 +58,10 @@ export class SemanticImageAttrComponent implements OnChanges {
   @HostBinding('class.rounded')
   get isRounded() {
     return this.isPresent(this.rounded);
+  }
+  @HostBinding('class.circular')
+  get isCircular() {
+    return this.isPresent(this.circular);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -94,6 +99,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('bordered') bordered?: boolean;
   @Input('fluid') fluid?: boolean;
   @Input('rounded') rounded?: boolean;
+  @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -119,6 +125,10 @@ export class SemanticImageComponent implements OnChanges {
   @HostBinding('class.rounded')
   get isRounded() {
     return this.isPresent(this.rounded);
+  }
+  @HostBinding('class.circular')
+  get isCircular() {
+    return this.isPresent(this.circular);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -156,6 +166,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('bordered') bordered?: boolean;
   @Input('fluid') fluid?: boolean;
   @Input('rounded') rounded?: boolean;
+  @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -181,6 +192,10 @@ export class SemanticSVGComponent implements OnChanges {
   @HostBinding('class.rounded')
   get isRounded() {
     return this.isPresent(this.rounded);
+  }
+  @HostBinding('class.circular')
+  get isCircular() {
+    return this.isPresent(this.circular);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
