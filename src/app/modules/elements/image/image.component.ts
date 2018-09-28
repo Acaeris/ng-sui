@@ -24,6 +24,7 @@ import { SemanticSizes } from '../../../defs/sizes';
 export class SemanticImageAttrComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
+  @Input('avatar') avatar?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('attr.src')
@@ -37,6 +38,10 @@ export class SemanticImageAttrComponent implements OnChanges {
   @HostBinding('class.hidden')
   get isHidden() {
     return this.isPresent(this.hidden);
+  }
+  @HostBinding('class.avatar')
+  get isAvatar() {
+    return this.isPresent(this.avatar);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -70,6 +75,7 @@ export class SemanticImageAttrComponent implements OnChanges {
 export class SemanticImageComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
+  @Input('avatar') avatar?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -79,6 +85,10 @@ export class SemanticImageComponent implements OnChanges {
   @HostBinding('class.hidden')
   get isHidden() {
     return this.isPresent(this.hidden);
+  }
+  @HostBinding('class.avatar')
+  get isAvatar() {
+    return this.isPresent(this.avatar);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -112,6 +122,7 @@ export class SemanticImageComponent implements OnChanges {
 export class SemanticSVGComponent implements OnChanges {
   @Input('disabled') disabled?: boolean;
   @Input('hidden') hidden?: boolean;
+  @Input('avatar') avatar?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -121,6 +132,10 @@ export class SemanticSVGComponent implements OnChanges {
   @HostBinding('class.hidden')
   get isHidden() {
     return this.isPresent(this.hidden);
+  }
+  @HostBinding('class.avatar')
+  get isAvatar() {
+    return this.isPresent(this.avatar);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
