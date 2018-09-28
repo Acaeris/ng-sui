@@ -8,7 +8,7 @@ import {
   HostBinding
 } from '@angular/core';
 
-import { SemanticHorizontalAlignments } from '../../../defs/alignments';
+import { SemanticTextAlignments } from '../../../defs/alignments';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSizes } from '../../../defs/sizes';
 
@@ -27,7 +27,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
   @Input() image?: string;
-  @Input() align?: "" | SemanticHorizontalAlignments;
+  @Input() align?: "" | SemanticTextAlignments;
   @Input() float?: "" | "left" | "right";
   @Input() attach?: "" | "both" | "top" | "bottom";
   @Input() bulleted?: boolean;
