@@ -78,64 +78,8 @@
   <sui-button basic color="brown">Brown</sui-button>
   <sui-button basic color="grey">Grey</sui-button>
   <sui-button basic color="black">Black</sui-button>
-  <h4 sui-header>Active</h4>
-  <sui-button active>Active</sui-button>
-  <h4 sui-header>Attached</h4>
-  <sui-button attached="top">Top</sui-button>
-  <div class="ui attached segment">
-    <p>This is a test segment for attaching</p>
-  </div>
-  <sui-button attached="bottom">Bottom</sui-button>
-  <sui-button attached="left">Left</sui-button>
-  <sui-button attached="right">Right</sui-button>
-
-  <h4 sui-header>Branding</h4>
-  <sui-button color="facebook" icon="facebook">Facebook</sui-button>
-  <sui-button color="twitter" icon="twitter">Twitter</sui-button>
-  <sui-button color="google plus" icon="google plus">Google Plus</sui-button>
-  <sui-button color="vk" icon="vk">VK</sui-button>
-  <sui-button color="linkedin" icon="linkedin">LinkedIn</sui-button>
-  <sui-button color="instagram" icon="instagram">Instagram</sui-button>
-  <sui-button color="youtube" icon="youtube">YouTube</sui-button>
-  <h4 sui-header>Colours</h4>
-  <sui-button color="primary">Primary</sui-button>
-  <sui-button color="secondary">Secondary</sui-button>
-  <sui-button color="positive">Positive</sui-button>
-  <sui-button color="negative">Negative</sui-button>
-  <sui-button color="red">Red</sui-button>
-  <sui-button color="orange">Orange</sui-button>
-  <sui-button color="yellow">Yellow</sui-button>
-  <sui-button color="olive">Olive</sui-button>
-  <sui-button color="green">Green</sui-button>
-  <sui-button color="teal">Teal</sui-button>
-  <sui-button color="blue">Blue</sui-button>
-  <sui-button color="violet">Violet</sui-button>
-  <sui-button color="purple">Purple</sui-button>
-  <sui-button color="pink">Pink</sui-button>
-  <sui-button color="brown">Brown</sui-button>
-  <sui-button color="grey">Grey</sui-button>
-  <sui-button color="black">Black</sui-button>
-  <h4 sui-header>Circular</h4>
-  <sui-button circular icon="heart"></sui-button>
-  <sui-button circular color="black" icon="apple"></sui-button>
-  <sui-button basic circular color="red" icon="marker"></sui-button>
-  <sui-button circular>With Text</sui-button>
-  <h4 sui-header>Compact</h4>
-  <sui-button compact>Compact</sui-button>
-  <h4 sui-header>Disabled</h4>
-  <sui-button disabled>Disabled</sui-button>
-  <h4 sui-header>Flags</h4>
-  <sui-button flag="gb">United Kingdom</sui-button>
-  <sui-button flag="us">United States</sui-button>
-  <h4 sui-header>Float</h4>
-  <sui-button float="right">Right Floated</sui-button>
-  <sui-button float="left">Left Floated</sui-button>
-  <div sui-divider clearing></div>
-  <h4 sui-header>Fluid</h4>
-  <sui-button fluid>Fluid</sui-button>
-  <h4 sui-header>Icons</h4>
-  <sui-button icon="lab">With Icons</sui-button>
   <h4 sui-header>Inverted</h4>
+  <p>
   <div class="ui inverted segment">
     <sui-button inverted>Inverted</sui-button>
     <sui-button inverted color="primary">Primary</sui-button>
@@ -155,7 +99,9 @@
     <sui-button inverted color="brown">Brown</sui-button>
     <sui-button inverted color="grey">Grey</sui-button>
     <sui-button inverted color="black">Black</sui-button>
-    <sui-button inverted basic>Inverted Basic</sui-button>
+  </div>
+  <div class="ui inverted segment">
+    <sui-button inverted basic>Basic</sui-button>
     <sui-button inverted basic color="primary">Primary</sui-button>
     <sui-button inverted basic color="secondary">Secondary</sui-button>
     <sui-button inverted basic color="positive">Positive</sui-button>
@@ -174,9 +120,59 @@
     <sui-button inverted basic color="grey">Grey</sui-button>
     <sui-button inverted basic color="black">Black</sui-button>
   </div>
+  <h3 sui-header>Groups</h3>
+  <h4 sui-header>Buttons</h4>
+  <p>Buttons can exist together in a group</p>
+  <sui-buttons>
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+    <sui-button>Three</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Icon Buttons</h4>
+  <p>Button groups can show groups of icons</p>
+  <sui-buttons icon>
+    <sui-button icon="align left"></sui-button>
+    <sui-button icon="align center"></sui-button>
+    <sui-button icon="align right"></sui-button>
+    <sui-button icon="align justify"></sui-button>
+  </sui-buttons>
+  <sui-buttons icon>
+    <sui-button icon="bold"></sui-button>
+    <sui-button icon="underline"></sui-button>
+    <sui-button icon="text width"></sui-button>
+  </sui-buttons>
+  <h3 sui-header>Content</h3>
+  <h4 sui-header>Conditionals</h4>
+  <sui-buttons>
+    <sui-button>Cancel</sui-button>
+    <div class="or"></div>
+    <sui-button color="positive">Save</sui-button>
+  </sui-buttons>
+  <h3 sui-header>States</h3>
+  <h4 sui-header>Active</h4>
+  <p>A button can show it is currently the active user selection</p>
+  <sui-button active icon="user">Follow</sui-button>
+  <h4 sui-header>Disabled</h4>
+  <p>A button can show it is currently unable to be interacted with</p>
+  <sui-button disabled icon="user">Followed</sui-button>
   <h4 sui-header>Loading</h4>
+  <p>A button can show a loading indicator</p>
   <sui-button loading>Loading</sui-button>
-  <h4 sui-header>Sizes</h4>
+  <sui-button basic loading>Loading</sui-button>
+  <sui-button color="primary" loading>Loading</sui-button>
+  <sui-button color="secondary" loading>Loading</sui-button>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Social</h4>
+  <p>A button can be formatted to link to a social website</p>
+  <sui-button color="facebook" icon="facebook">Facebook</sui-button>
+  <sui-button color="twitter" icon="twitter">Twitter</sui-button>
+  <sui-button color="google plus" icon="google plus">Google Plus</sui-button>
+  <sui-button color="vk" icon="vk">VK</sui-button>
+  <sui-button color="linkedin" icon="linkedin">LinkedIn</sui-button>
+  <sui-button color="instagram" icon="instagram">Instagram</sui-button>
+  <sui-button color="youtube" icon="youtube">YouTube</sui-button>
+  <h4 sui-header>Size</h4>
+  <p>A button can have different sizes</p>
   <sui-button size="mini">Mini</sui-button>
   <sui-button size="tiny">Tiny</sui-button>
   <sui-button size="small">Small</sui-button>
@@ -185,50 +181,291 @@
   <sui-button size="big">Big</sui-button>
   <sui-button size="huge">Huge</sui-button>
   <sui-button size="massive">Massive</sui-button>
+  <h4 sui-header>Floated</h4>
+  <p>A button can be aligned to the left or right of its container</p>
+  <div class="ui clearing segment">
+    <sui-button float="right">Right Floated</sui-button>
+    <sui-button float="left">Left Floated</sui-button>
+  </div>
+  <h4 sui-header>Coloured</h4>
+  <p>A button can have different colors</p>
+  <sui-button color="red">Red</sui-button>
+  <sui-button color="orange">Orange</sui-button>
+  <sui-button color="yellow">Yellow</sui-button>
+  <sui-button color="olive">Olive</sui-button>
+  <sui-button color="green">Green</sui-button>
+  <sui-button color="teal">Teal</sui-button>
+  <sui-button color="blue">Blue</sui-button>
+  <sui-button color="violet">Violet</sui-button>
+  <sui-button color="purple">Purple</sui-button>
+  <sui-button color="pink">Pink</sui-button>
+  <sui-button color="brown">Brown</sui-button>
+  <sui-button color="grey">Grey</sui-button>
+  <sui-button color="black">Black</sui-button>
+  <h4 sui-header>Compact</h4>
+  <p>A button can reduce its padding to fir into tighter spaces</p>
+  <sui-button compact>Hold</sui-button>
+  <sui-button compact icon="pause"></sui-button>
+  <sui-button compact label="left" icon="pause">Pause</sui-button>
   <h4 sui-header>Toggle</h4>
-  <sui-button toggle>Toggle</sui-button>
-  <h2 sui-header>Divider</h2>
+  <p>A button can be formatted to toggle on and off</p>
+  <sui-button toggle>Vote</sui-button>
+  <h4 sui-header>Positive</h4>
+  <p>A button can hint towards a positive consequence</p>
+  <sui-button color="positive">Positive Button</sui-button>
+  <h4 sui-header>Negative</h4>
+  <p>A button can hint towards a negative consequence</p>
+  <sui-button color="negative">Negative Button</sui-button>
+  <h4 sui-header>Fluid</h4>
+  <p>A button can take the width of its container</p>
+  <sui-button fluid>Fits container</sui-button>
+  <h4 sui-header>Circular</h4>
+  <p>A button can be circular</p>
+  <sui-button circular icon="settings"></sui-button>
+  <p>&nbsp;</p>
+  <sui-button circular color="facebook" icon="facebook"></sui-button>
+  <sui-button circular color="twitter" icon="twitter"></sui-button>
+  <sui-button circular color="linkedin" icon="linkedin"></sui-button>
+  <sui-button circular color="google plus" icon="google plus"></sui-button>
+  <h4 sui-header>Vertically Attached</h4>
+  <p>A button can be attachedto the top or bottom of other content</p>
+  <sui-button attached="top">Top</sui-button>
+  <div class="ui attached segment">
+    <p>This is a test segment for attaching</p>
+  </div>
+  <sui-button attached="bottom">Bottom</sui-button>
+  <p>&nbsp;</p>
+  <sui-buttons attached="top">
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+  </sui-buttons>
+  <div class="ui attached segment">
+    <p>This is a test segment for attaching</p>
+  </div>
+  <sui-buttons attached="bottom">
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Horizontally Attached</h4>
+  <p>A button can be attached to the left or right of other content.</p>
+  <sui-button attached="left">Left</sui-button>
+  <sui-button attached="right">Right</sui-button>
+  <h3 sui-header>Group Variations</h3>
+  <h4 sui-header>Vertical Buttons</h4>
+  <p>Groups can be formatted to appear vertically</p>
+  <sui-buttons vertical>
+    <sui-button>Feed</sui-button>
+    <sui-button>Messages</sui-button>
+    <sui-button>Events</sui-button>
+    <sui-button>Photos</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Icon Buttons</h4>
+  <p>Groups can be formatted as icons</p>
+  <sui-buttons icon>
+    <sui-button icon="play"></sui-button>
+    <sui-button icon="pause"></sui-button>
+    <sui-button icon="shuffle"></sui-button>
+  </sui-buttons>
+  <h4 sui-header>Labeled Icon Buttons</h4>
+  <p>Groups can be formatted as labeled icons</p>
+  <sui-buttons vertical labeled icon>
+    <sui-button icon="pause">Pause</sui-button>
+    <sui-button icon="play">Play</sui-button>
+    <sui-button icon="shuffle">Shuffle</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Mixed Group</h4>
+  <p>Groups can be formatted to use multiple button types together</p>
+  <sui-buttons>
+    <sui-button label="left" icon="left chevron">Back</sui-button>
+    <sui-button icon="stop">Stop</sui-button>
+    <sui-button label="right" icon="right chevron">Forward</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Equal Width</h4>
+  <p>Groups can have their widths divided evenly</p>
+  <sui-buttons width="5">
+    <sui-button>Overview</sui-button>
+    <sui-button>Specs</sui-button>
+    <sui-button>Warranty</sui-button>
+    <sui-button>Reviews</sui-button>
+    <sui-button>Support</sui-button>
+  </sui-buttons>
+  <sui-buttons width="3">
+    <sui-button>Overview</sui-button>
+    <sui-button>Specs</sui-button>
+    <sui-button>Support</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Colored Buttons</h4>
+  <p>Groups can have a shared color</p>
+  <sui-buttons color="blue">
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+    <sui-button>Three</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Basic Buttons</h4>
+  <p>A button group can be less pronounced</p>
+  <sui-buttons basic>
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+    <sui-button>Three</sui-button>
+  </sui-buttons>
   <div sui-divider></div>
-  <h4 sui-header>Labeled</h4>
-  <div sui-divider label="Labeled"></div>
-  <h4 sui-header>Icons</h4>
-  <div sui-divider label="Description" icon="globe"></div>
-  <h4 sui-header>Clearing</h4>
-  <sui-button float="right">Right Floated</sui-button>
-  <sui-button float="left">Left Floated</sui-button>
-  <div sui-divider clearing label="Clearing"></div>
+  <sui-buttons basic vertical>
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+    <sui-button>Three</sui-button>
+  </sui-buttons>
+  <p>&nbsp;</p>
+  <sui-buttons>
+    <sui-button basic color="red">One</sui-button>
+    <sui-button basic color="blue">Two</sui-button>
+    <sui-button basic color="green">Three</sui-button>
+  </sui-buttons>
+  <h4 sui-header>Group Sizes</h4>
+  <p>Groups can have a shared size</p>
+  <sui-buttons size="large">
+    <sui-button>One</sui-button>
+    <sui-button>Two</sui-button>
+    <sui-button>Three</sui-button>
+  </sui-buttons>
+  <p>&nbsp;</p>
+  <sui-buttons size="small" basic icon>
+    <sui-button icon="file"></sui-button>
+    <sui-button icon="save"></sui-button>
+    <sui-button icon="upload"></sui-button>
+    <sui-button icon="download"></sui-button>
+  </sui-buttons>
+  <p>&nbsp;</p>
+  <sui-buttons size="large">
+    <sui-button>One</sui-button>
+    <div class="or"></div>
+    <sui-button>Two</sui-button>
+  </sui-buttons>
+  <h3 sui-header>Additional Features</h3>
+  <h4 sui-header>Flags</h4>
+  <sui-button flag="gb">United Kingdom</sui-button>
+  <sui-button flag="us">United States</sui-button>
+
+  <h2 sui-header>Divider</h2>
+  <p>A standard divider</p>
+  <div sui-divider></div>
+  <h4>Vertical Divider</h4>
+  <p>A divider can segment content vertically</p>
+  <div class="ui segment">
+    <div class="ui two column vert relaxed grid">
+      <div class="column">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+      </div>
+      <div class="column">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+      </div>
+    </div>
+    <div sui-divider vertical label="and"></div>
+  </div>
+  <p>&nbsp;</p>
+  <div class="ui placeholder segment">
+    <div class="ui two column very relaxed stackable grid">
+      <div class="column">
+        <div class="ui form">
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left icon input">
+              <input type="text" placeholder="Username">
+              <i sui-icon="user"></i>
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left icon input">
+              <input type="password">
+              <i sui-icon="lock"></i>
+            </div>
+          </div>
+          <sui-button color="blue">Login</sui-button>
+        </div>
+      </div>
+      <div class="middle aligned column">
+        <sui-button size="big" icon="signup">Sign Up</sui-button>
+      </div>
+    </div>
+    <div sui-divider vertical label="Or"></div>
+  </div>
+  <h4 sui-header>Horizontal Divider</h4>
+  <p>A divider can segment content horizontally</p>
+  <div class="ui center aligned basic segment">
+    <div class="ui left icon action input">
+      <i sui-icon="search"></i>
+      <input type="text" placeholder="Order #">
+      <sui-button color="blue">Search</sui-button>
+    </div>
+    <div sui-divider label="Or"></div>
+    <sui-button label="left" icon="add" color="teal">Create New Order</sui-button>
+  </div>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Inverted</h4>
+  <p>A divider can have its colors inverted</p>
+  <div class="ui inverted segment">
+    <p></p>
+    <div sui-divider inverted></div>
+    <p></p>
+    <div sui-divider inverted label="Horizontal"></div>
+  </div>
   <h4 sui-header>Fitted</h4>
-  <p>Some test text</p>
-  <div sui-divider fitted></div>
-  <p>The divider should be tightly fitted between the paragraphs</p>
+  <p>A divider can be fitted, without any space above or below it</p>
+  <div class="ui segment">
+    Test text
+    <div sui-divider fitted></div>
+    More text
+  </div>
   <h4 sui-header>Hidden</h4>
+  <p>A hidden divider dividescontent without creating a dividing line</p>
   <p>Some test text</p>
   <div sui-divider hidden></div>
   <p>The divider should be hidden between the paragraphs</p>
-  <h4 sui-header>Inverted</h4>
-  <div class="ui inverted segment">
-    <div sui-divider label="Inverted" inverted></div>
-    <div sui-divider label="Description" inverted icon="globe"></div>
-  </div>
   <h4 sui-header>Section</h4>
-  <p>Some test text</p>
+  <p>A divider can provide greater margins to divide sections of content</p>
+  <p>Section 1</p>
   <div sui-divider section></div>
-  <p>The section divider has greater margins</p>
+  <p>Section 2</p>
+  <h4 sui-header>Clearing</h4>
+  <p>A divider can clear the contents above it</p>
+  <div class="ui segment">
+    <h2 sui-header float="right">Floated Content</h2>
+    <div sui-divider clearing></div>
+    <p>Test text</p>
+  </div>
+  <h3 sui-header>Additional Features</h3>
+  <h4 sui-header>Icons</h4>
+  <div sui-divider label="Description" icon="globe"></div>
+  <h2 sui-header>Flag</h2>
+  <p>A flag can use the two digit country code, the full name, or a common alias</p>
+  <i sui-flag="ae"></i>
+  <i sui-flag="france"></i>
+  <i sui-flag="myanmar"></i>
   <h2 sui-header>Header</h2>
-  <h4 sui-header>Page Header Size</h4>
-  <p>Page Headers have static size set using the header hierarchy (h1, h2, h3, h4, h5, h6)</p>
+  <h4 sui-header>Page Headers</h4>
+  <p>Headers may be oriented to give the hierarchy of a section in the context of the page</p>
   <h1 sui-header>First Header</h1>
   <h2 sui-header>Second Header</h2>
   <h3 sui-header>Third Header</h3>
   <h4 sui-header>Fourth Header</h4>
   <h5 sui-header>Fifth Header</h5>
   <h6 sui-header>Sixth Header</h6>
-  <h4 sui-header>Content Header Size</h4>
-  <p>Content headers have relative sizes using the size parameter</p>
+  <h4 sui-header>Content Headers</h4>
+  <p>Headers may be oriented to give the importance of a section in the context of the content that surrounds it</p>
   <sui-header size="huge">Huge Header</sui-header>
+  <p>&nbsp;</p>
   <sui-header size="large">Large Header</sui-header>
+  <p>&nbsp;</p>
   <sui-header size="medium">Medium Header</sui-header>
+  <p>&nbsp;</p>
   <sui-header size="small">Small Header</sui-header>
+  <p>&nbsp;</p>
   <sui-header size="tiny">Tiny Header</sui-header>
   <h4 sui-header>Icon Headers</h4>
   <p>A header can be formatted to emphasize an icon</p>
@@ -239,6 +476,90 @@
   <h2 sui-header icon="circular users" align="center">Friends</h2>
   <h4 sui-header>Sub Headers</h4>
   <p>Sub headers are formatted to label smaller or de-emphasized content.</p>
-  <sui-subheader>First Subheader</sui-subheader>
-  <p>Example</p>
+  <sui-subheader>Price</sui-subheader>
+  <p>$10.99</p>
+  <h3 sui-header>Content</h3>
+  <h4 sui-header>Image</h4>
+  <h2 sui-header image="/images/icons/school.png">Learn More</h2>
+  <h2 sui-header image="/images/icons/plugin.png" sub="Check out our plug-in marketplace">Plugins</h2>
+  <h4 sui-header>Icon</h4>
+  <p>A header may contain an icon</p>
+  <h2 sui-header icon="plug" bulleted>Uptime Guarantee</h2>
+  <h2 sui-header icon="settings" bulleted sub="Manage your preferences">Account Settings</h2>
+  <h4 sui-header>Subheader</h4>
+  <p>Headers may container subheaders</p>
+  <h2 sui-header sub="Manage your account settings and set e-mail preferences.">Account Settings</h2>
+  <h1 sui-header sub="Sub Header">H1</h1>
+  <h2 sui-header sub="Sub Header">H2</h2>
+  <h3 sui-header sub="Sub Header">H3</h3>
+  <h4 sui-header sub="Sub Header">H4</h4>
+  <h5 sui-header sub="Sub Header">H5</h5>
+  <h6 sui-header sub="Sub Header">H6</h6>
+  <h3 sui-header>Status</h3>
+  <h4 sui-header>Disabled</h4>
+  <sui-header disabled>Disabled Header</sui-header>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Dividing</h4>
+  <p>A header can be formatted to divide itself from the content below it</p>
+  <p>Some test text</p>
+  <h3 sui-header dividing>Dividing Header</h3>
+  <p>More test text</p>
+  <h4 sui-header>Block</h4>
+  <p>A header can be formatted to appear inside a content block</p>
+  <h3 sui-header block>Block Header</h3>
+  <h4 sui-header>Attached</h4>
+  <p>A header can be attached to other content, like a segment</p>
+  <h3 sui-header attach="top">Top Attached</h3>
+  <div class="ui attached segment">
+    <p></p>
+  </div>
+  <h3 sui-header attach="both">Attached</h3>
+  <div class="ui attached segment">
+    <p></p>
+  </div>
+  <h3 sui-header attach="bottom">Bottom Attached</h3>
+  <h4 sui-header>Floating</h4>
+  <p>A header can sit to the left or right of other content</p>
+  <div class="ui clearing segment">
+    <h3 sui-header float="right">Go Forward</h3>
+    <h3 sui-header float="left">Go Back</h3>
+  </div>
+  <h4 sui-header>Text Alignment</h4>
+  <p>A header can have its text aligned to a side</p>
+  <div class="ui segment">
+    <h3 sui-header align="right">Right</h3>
+    <h3 sui-header align="left">Left</h3>
+    <h3 sui-header align="justify">This should take up the full width even if only one line</h3>
+    <h3 sui-header align="center">Center</h3>
+  </div>
+  <h4 sui-header>Colored</h4>
+  <p>A header can be formatted with different colors</p>
+  <h4 sui-header color="red">Red</h4>
+  <h4 sui-header color="orange">Orange</h4>
+  <h4 sui-header color="yellow">Yellow</h4>
+  <h4 sui-header color="olive">Olive</h4>
+  <h4 sui-header color="green">Green</h4>
+  <h4 sui-header color="teal">Teal</h4>
+  <h4 sui-header color="blue">Blue</h4>
+  <h4 sui-header color="purple">Purple</h4>
+  <h4 sui-header color="violet">Violet</h4>
+  <h4 sui-header color="pink">Pink</h4>
+  <h4 sui-header color="brown">Brown</h4>
+  <h4 sui-header color="grey">Grey</h4>
+  <h4 sui-header>Inverted</h4>
+  <p>A header can have its colors inverted for contrast</p>
+  <div class="ui inverted segment">
+  <h4 sui-header inverted color="red">Red</h4>
+  <h4 sui-header inverted color="orange">Orange</h4>
+  <h4 sui-header inverted color="yellow">Yellow</h4>
+  <h4 sui-header inverted color="olive">Olive</h4>
+  <h4 sui-header inverted color="green">Green</h4>
+  <h4 sui-header inverted color="teal">Teal</h4>
+  <h4 sui-header inverted color="blue">Blue</h4>
+  <h4 sui-header inverted color="purple">Purple</h4>
+  <h4 sui-header inverted color="violet">Violet</h4>
+  <h4 sui-header inverted color="pink">Pink</h4>
+  <h4 sui-header inverted color="brown">Brown</h4>
+  <h4 sui-header inverted color="grey">Grey</h4>
+  </div>
 </sui-container>
