@@ -27,6 +27,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
   @Input() align?: "" | SemanticHorizontalAlignments;
+  @Input() float?: "" | "left" | "right";
   @Input() attached?: "" | 'top' | 'bottom';
   @Input() block?: boolean;
   @Input() color?: SemanticColors;
@@ -62,6 +63,10 @@ export class SemanticHeaderComponent implements OnChanges {
     if ("undefined" !== typeof this.align) {
       this.renderer.addClass(this.el.nativeElement, this.align);
       this.renderer.addClass(this.el.nativeElement, 'aligned');
+    }
+    if (this.hasValue(this.float)) {
+      this.renderer.addClass(this.el.nativeElement, this.float);
+      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
   }
 
