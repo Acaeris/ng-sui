@@ -26,6 +26,7 @@ import { SemanticSizes } from '../../../defs/sizes';
 export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
+  @Input() image?: string;
   @Input() align?: "" | SemanticHorizontalAlignments;
   @Input() float?: "" | "left" | "right";
   @Input() attached?: "" | 'top' | 'bottom';
