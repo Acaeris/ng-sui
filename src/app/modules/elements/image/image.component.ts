@@ -26,6 +26,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
   @Input('bordered') bordered?: boolean;
+  @Input('fluid') fluid?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('attr.src')
@@ -47,6 +48,10 @@ export class SemanticImageAttrComponent implements OnChanges {
   @HostBinding('class.bordered')
   get isBordered() {
     return this.isPresent(this.bordered);
+  }
+  @HostBinding('class.fluid')
+  get isFluid() {
+    return this.isPresent(this.fluid);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -82,6 +87,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
   @Input('bordered') bordered?: boolean;
+  @Input('fluid') fluid?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -99,6 +105,10 @@ export class SemanticImageComponent implements OnChanges {
   @HostBinding('class.bordered')
   get isBordered() {
     return this.isPresent(this.bordered);
+  }
+  @HostBinding('class.fluid')
+  get isFluid() {
+    return this.isPresent(this.fluid);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -134,6 +144,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('hidden') hidden?: boolean;
   @Input('avatar') avatar?: boolean;
   @Input('bordered') bordered?: boolean;
+  @Input('fluid') fluid?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
@@ -151,6 +162,10 @@ export class SemanticSVGComponent implements OnChanges {
   @HostBinding('class.bordered')
   get isBordered() {
     return this.isPresent(this.bordered);
+  }
+  @HostBinding('class.fluid')
+  get isFluid() {
+    return this.isPresent(this.fluid);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
