@@ -209,6 +209,10 @@ export class SemanticButtonsComponent implements OnChanges {
       this.renderer.addClass(this.el.nativeElement, this.attached);
       this.renderer.addClass(this.el.nativeElement, 'attached');
     }
+    var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
+    for (var i = 0; i < colors.length; i++) {
+      this.renderer.addClass(this.el.nativeElement, colors[i]);
+    }
     if (this.hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
       this.renderer.addClass(this.el.nativeElement, 'floated');
