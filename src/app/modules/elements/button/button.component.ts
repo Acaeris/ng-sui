@@ -13,6 +13,8 @@ import { SemanticFloats } from '../../../defs/floats';
 import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticWidths } from '../../../defs/widths';
 import { numberToWord } from '../../../libs/numberToWord';
+import { hasValue } from '../../../libs/hasValue';
+import { isPresent } from '../../../libs/isPresent';
 
 /**
  * Implementation of Button component
@@ -45,40 +47,60 @@ export class SemanticButtonComponent implements OnChanges {
   @Input() size?: SemanticSizes;
   @Input() toggle?: boolean;
   @HostBinding('class.active')
-  get isActive() {
-    return this.isPresent(this.active);
+  get isActive(): boolean {
+    return isPresent(this.active);
   };
+  @HostBinding('class.animated')
+  get isAnimated(): boolean {
+    return "undefined" !== typeof this.animated;
+  }
+  @HostBinding('class.attached')
+  get isAttached(): boolean {
+    return "undefined" !== typeof this.attached;
+  }
   @HostBinding('class.basic')
   get isBasic() {
-    return this.isPresent(this.basic);
+    return isPresent(this.basic);
   };
   @HostBinding('class.circular')
   get isCircular() {
-    return this.isPresent(this.circular);
+    return isPresent(this.circular);
   }
   @HostBinding('class.compact')
   get isCompact() {
-    return this.isPresent(this.compact);
+    return isPresent(this.compact);
   }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
+  }
+  @HostBinding('class.icon')
+  get hasIcon() {
+    return ((hasValue(this.icon) || hasValue(this.flag)) && hasValue(this.label)) || "" === this.el.nativeElement.innerText;
   }
   @HostBinding('class.inverted')
   get isInverted() {
-    return this.isPresent(this.inverted);
+    return isPresent(this.inverted);
+  }
+  @HostBinding('class.labeled')
+  get isLabeled() {
+    return hasValue(this.label);
   }
   @HostBinding('class.loading')
   get isLoading() {
-    return this.isPresent(this.loading);
+    return isPresent(this.loading);
   }
   @HostBinding('class.toggle')
   get isToggle() {
-    return this.isPresent(this.toggle);
+    return isPresent(this.toggle);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
@@ -87,42 +109,24 @@ export class SemanticButtonComponent implements OnChanges {
     if ("BUTTON" !== this.el.nativeElement.tagName) {
       this.el.nativeElement.tabIndex = 0;
     }
-    if ("undefined" !== typeof this.animated) {
-      this.renderer.addClass(this.el.nativeElement, 'animated');
-      if ("" !== this.animated) {
-        this.renderer.addClass(this.el.nativeElement, this.animated);
-      }
+    if (hasValue(this.animated)) {
+      this.renderer.addClass(this.el.nativeElement, this.animated);
     }
-    if ("undefined" !== typeof this.attached) {
-      if ("" !== this.attached) {
-        this.renderer.addClass(this.el.nativeElement, this.attached);
-      }
-      this.renderer.addClass(this.el.nativeElement, 'attached');
+    if (hasValue(this.attached)) {
+      this.renderer.addClass(this.el.nativeElement, this.attached);
     }
     var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
-    if ("undefined" !== typeof this.float) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-    if ("undefined" !== typeof this.label) {
+    if (hasValue(this.label)) {
       this.renderer.addClass(this.el.nativeElement, this.label);
-      this.renderer.addClass(this.el.nativeElement, 'labeled');
-      if ("undefined" !== typeof this.icon || "undefined" !== typeof this.flag) {
-        this.renderer.addClass(this.el.nativeElement, 'icon');
-      }
     }
-    if ("undefined" !== typeof this.size) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("" === this.el.nativeElement.innerText) {
-      this.renderer.addClass(this.el.nativeElement, 'icon');
-    }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
   }
 }
