@@ -11,6 +11,7 @@ import {
 import { SemanticTextAlignments } from '../../../defs/alignments';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSizes } from '../../../defs/sizes';
+import { SemanticFloats } from '../../../defs/floats';
 
 /**
  * Implementation of Header component
@@ -28,7 +29,7 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() flag?: string;
   @Input() image?: string;
   @Input() align?: "" | SemanticTextAlignments;
-  @Input() float?: "" | "left" | "right";
+  @Input() float?: "" | SemanticFloats;
   @Input() attach?: "" | "both" | "top" | "bottom";
   @Input() bulleted?: boolean;
   @Input() inverted?: boolean;
