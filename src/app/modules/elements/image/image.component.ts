@@ -10,6 +10,7 @@ import {
 
 import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticVerticalAlignments } from '../../../defs/alignments';
+import { SemanticFloats } from '../../../defs/floats';
 
 /**
  * Implementation of Image component
@@ -34,6 +35,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
+  @Input('float') float?: "" | SemanticFloats;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
@@ -85,6 +87,10 @@ export class SemanticImageAttrComponent implements OnChanges {
     if (this.hasValue(this.url)) {
       this.renderer.setAttribute(this.el.nativeElement, 'src', this.url);
     }
+    if ("undefined" !== typeof this.float) {
+      this.renderer.addClass(this.el.nativeElement, this.float);
+      this.renderer.addClass(this.el.nativeElement, 'floated');
+    }
   }
 
   isPresent(key?: boolean) {
@@ -119,6 +125,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
+  @Input('float') float?: "" | SemanticFloats;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
@@ -167,6 +174,10 @@ export class SemanticImageComponent implements OnChanges {
       this.renderer.addClass(this.el.nativeElement, this.align);
       this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
+    if ("undefined" !== typeof this.float) {
+      this.renderer.addClass(this.el.nativeElement, this.float);
+      this.renderer.addClass(this.el.nativeElement, 'floated');
+    }
   }
 
   isPresent(key?: boolean) {
@@ -201,6 +212,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
+  @Input('float') float?: "" | SemanticFloats;
   @HostBinding('class.disabled')
   get isDisabled() {
     return this.isPresent(this.disabled);
@@ -247,6 +259,10 @@ export class SemanticSVGComponent implements OnChanges {
     if ("undefined" !== typeof this.align) {
       this.renderer.addClass(this.el.nativeElement, this.align);
       this.renderer.addClass(this.el.nativeElement, 'aligned');
+    }
+    if ("undefined" !== typeof this.float) {
+      this.renderer.addClass(this.el.nativeElement, this.float);
+      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
   }
 
