@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { SemanticSizes } from '../../../defs/sizes';
+import { SemanticVerticalAlignments } from '../../../defs/alignments';
 
 /**
  * Implementation of Image component
@@ -30,6 +31,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
+  @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
   @HostBinding('attr.src')
   get hasSource() {
@@ -70,6 +72,10 @@ export class SemanticImageAttrComponent implements OnChanges {
     if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
+    if ("undefined" !== typeof this.align) {
+      this.renderer.addClass(this.el.nativeElement, this.align);
+      this.renderer.addClass(this.el.nativeElement, 'aligned');
+    }
   }
 
   isPresent(key?: boolean) {
@@ -101,6 +107,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
+  @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
@@ -137,6 +144,10 @@ export class SemanticImageComponent implements OnChanges {
     if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
+    if ("undefined" !== typeof this.align) {
+      this.renderer.addClass(this.el.nativeElement, this.align);
+      this.renderer.addClass(this.el.nativeElement, 'aligned');
+    }
   }
 
   isPresent(key?: boolean) {
@@ -168,6 +179,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('size') size?: "" | SemanticSizes;
+  @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
@@ -203,6 +215,10 @@ export class SemanticSVGComponent implements OnChanges {
   ngOnChanges() {
     if (this.hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
+    }
+    if ("undefined" !== typeof this.align) {
+      this.renderer.addClass(this.el.nativeElement, this.align);
+      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
   }
 
