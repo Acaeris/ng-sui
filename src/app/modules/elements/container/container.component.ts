@@ -8,6 +8,8 @@ import {
   HostBinding
 } from '@angular/core';
 import { SemanticTextAlignments } from '../../../defs/alignments';
+import { hasValue } from '../../../libs/hasValue';
+import { isPresent } from '../../../libs/isPresent';
 
 /**
  * Implementation of Container component
@@ -24,25 +26,24 @@ export class SemanticContainerComponent implements OnChanges {
   @Input() fluid?: boolean;
   @Input() text?: boolean;
   @Input() textAlign?: SemanticTextAlignments;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.textAlign);
+  }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.text')
   get isText() {
-    return this.isPresent(this.text);
+    return isPresent(this.text);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if ("undefined" !== typeof this.textAlign) {
+    if (hasValue(this.textAlign)) {
       this.renderer.addClass(this.el.nativeElement, this.textAlign);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
   }
 }
