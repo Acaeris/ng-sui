@@ -31,6 +31,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('centered') centered?: boolean;
+  @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
@@ -65,6 +66,10 @@ export class SemanticImageAttrComponent implements OnChanges {
   @HostBinding('class.centered')
   get isCentered() {
     return this.isPresent(this.centered);
+  }
+  @HostBinding('class.spaced')
+  get isSpaced() {
+    return this.isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -111,6 +116,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('centered') centered?: boolean;
+  @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
@@ -145,6 +151,10 @@ export class SemanticImageComponent implements OnChanges {
   @HostBinding('class.centered')
   get isCentered() {
     return this.isPresent(this.centered);
+  }
+  @HostBinding('class.spaced')
+  get isSpaced() {
+    return this.isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
@@ -188,6 +198,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
   @Input('centered') centered?: boolean;
+  @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
   @HostBinding('class.disabled')
@@ -221,6 +232,10 @@ export class SemanticSVGComponent implements OnChanges {
   @HostBinding('class.centered')
   get isCentered() {
     return this.isPresent(this.centered);
+  }
+  @HostBinding('class.spaced')
+  get isSpaced() {
+    return this.isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
