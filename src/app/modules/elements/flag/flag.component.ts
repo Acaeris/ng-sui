@@ -19,7 +19,7 @@ import {
   host: { 'class' : 'flag' }
 })
 export class SemanticFlagComponent implements OnChanges {
-  @Input('code') code?: string;
+  @Input() code?: string;
   @Input('sui-flag') flag?: string;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }

@@ -12,6 +12,8 @@ import { SemanticTextAlignments } from '../../../defs/alignments';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticFloats } from '../../../defs/floats';
+import { hasValue } from '../../../libs/hasValue';
+import { isPresent } from '../../../libs/isPresent';
 
 /**
  * Implementation of Header component
@@ -39,63 +41,62 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() disabled?: boolean;
   @Input() size?: SemanticSizes;
   @Input() sub?: string;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.align) && "justify" !== this.align;
+  }
+  @HostBinding('class.attached')
+  get isAttached() {
+    return hasValue(this.attach);
+  }
   @HostBinding('class.block')
   get isBlock() {
-    return this.isPresent(this.block);
+    return isPresent(this.block);
   }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
-  }
-  @HostBinding('class.icon')
-  get isIconHeader() {
-    return this.hasValue(this.icon) && !this.isPresent(this.bulleted);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.dividing')
   get isDividing() {
-    return this.isPresent(this.dividing);
+    return isPresent(this.dividing);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
+  }
+  @HostBinding('class.icon')
+  get isIconHeader() {
+    return hasValue(this.icon) && !isPresent(this.bulleted);
   }
   @HostBinding('class.inverted')
   get isInverted() {
-    return this.isPresent(this.inverted);
+    return isPresent(this.inverted);
+  }
+  @HostBinding('class.justify')
+  get isJustified() {
+    return hasValue(this.align) && "justify" === this.align;
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.attach)) {
-      if ("both" !== this.attach) {
-        this.renderer.addClass(this.el.nativeElement, this.attach);
-      }
-      this.renderer.addClass(this.el.nativeElement, 'attached');
+    if (hasValue(this.attach) && "both" !== this.attach) {
+      this.renderer.addClass(this.el.nativeElement, this.attach);
     }
-    var colors: string[] = (this.hasValue(this.color)) ? this.color.split(" ") : [];
+    var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.align) {
-      if ("justify" === this.align) {
-        this.renderer.addClass(this.el.nativeElement, 'justified');
-      } else {
-        this.renderer.addClass(this.el.nativeElement, this.align);
-        this.renderer.addClass(this.el.nativeElement, 'aligned');
-      }
+    if (hasValue(this.align) && "justify" !== this.align) {
+      this.renderer.addClass(this.el.nativeElement, this.align);
     }
-    if (this.hasValue(this.float)) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }
 
@@ -111,24 +112,20 @@ export class SemanticHeaderComponent implements OnChanges {
   host: { 'class' : 'sub header' }
 })
 export class SemanticSubheaderComponent implements OnChanges {
-  @Input('icon') icon?: string;
-  @Input('child') child?: boolean;
-  @Input('disabled') disabled?: boolean;
+  @Input() icon?: string;
+  @Input() child?: boolean;
+  @Input() disabled?: boolean;
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.ui')
   get isNotChild() {
-    return !this.isPresent(this.child);
+    return !isPresent(this.child);
   }
 
   constructor() { }
 
   ngOnChanges() {
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
   }
 }
