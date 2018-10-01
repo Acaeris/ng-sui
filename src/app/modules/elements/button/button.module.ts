@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SemanticButtonComponent, SemanticButtonsComponent } from './button.component';
+import { SemanticButtonComponent } from './button.component';
+import { SemanticButtonsComponent } from './buttons.component';
 import { SemanticIconModule } from '../icon/icon.module';
 import { SemanticFlagModule } from '../flag/flag.module';
 
