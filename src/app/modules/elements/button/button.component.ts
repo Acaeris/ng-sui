@@ -29,8 +29,8 @@ import { isPresent } from '../../../libs/isPresent';
 })
 export class SemanticButtonComponent implements OnChanges {
   @Input() active?: boolean;
-  @Input() animated?: "" | 'fade' | 'vertical';
-  @Input() attached?: "" | 'left' | 'right' | 'top' | 'bottom';
+  @Input() animate?: "" | 'fade' | 'vertical';
+  @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
@@ -52,11 +52,11 @@ export class SemanticButtonComponent implements OnChanges {
   };
   @HostBinding('class.animated')
   get isAnimated(): boolean {
-    return "undefined" !== typeof this.animated;
+    return "undefined" !== typeof this.animate;
   }
   @HostBinding('class.attached')
   get isAttached(): boolean {
-    return "undefined" !== typeof this.attached;
+    return "undefined" !== typeof this.attach;
   }
   @HostBinding('class.basic')
   get isBasic() {
@@ -109,11 +109,11 @@ export class SemanticButtonComponent implements OnChanges {
     if ("BUTTON" !== this.el.nativeElement.tagName) {
       this.el.nativeElement.tabIndex = 0;
     }
-    if (hasValue(this.animated)) {
-      this.renderer.addClass(this.el.nativeElement, this.animated);
+    if (hasValue(this.animate)) {
+      this.renderer.addClass(this.el.nativeElement, this.animate);
     }
-    if (hasValue(this.attached)) {
-      this.renderer.addClass(this.el.nativeElement, this.attached);
+    if (hasValue(this.attach)) {
+      this.renderer.addClass(this.el.nativeElement, this.attach);
     }
     var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {

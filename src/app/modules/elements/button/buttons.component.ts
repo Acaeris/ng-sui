@@ -13,6 +13,8 @@ import { SemanticFloats } from '../../../defs/floats';
 import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticWidths } from '../../../defs/widths';
 import { numberToWord } from '../../../libs/numberToWord';
+import { hasValue } from '../../../libs/hasValue';
+import { isPresent } from '../../../libs/isPresent';
 
 /**
  * Implementation of Button Group component
@@ -26,7 +28,7 @@ import { numberToWord } from '../../../libs/numberToWord';
   host: { 'class' : 'ui buttons' }
 })
 export class SemanticButtonsComponent implements OnChanges {
-  @Input() attached?: "" | 'left' | 'right' | 'top' | 'bottom';
+  @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
@@ -40,67 +42,65 @@ export class SemanticButtonsComponent implements OnChanges {
   @Input() toggle?: boolean;
   @Input() vertical?: boolean;
   @Input() width?: SemanticWidths;
+  @HostBinding('class.attached')
+  get isAttached() {
+    return hasValue(this.attach);
+  }
   @HostBinding('class.basic')
   get isBasic() {
-    return this.isPresent(this.basic);
+    return isPresent(this.basic);
   }
   @HostBinding('class.compact')
   get isCompact() {
-    return this.isPresent(this.compact);
+    return isPresent(this.compact);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.icon')
   get isIcon() {
-    return this.isPresent(this.icon);
+    return isPresent(this.icon);
   }
   @HostBinding('class.inverted')
   get isInverted() {
-    return this.isPresent(this.inverted);
+    return isPresent(this.inverted);
   }
   @HostBinding('class.labeled')
   get isLabeled() {
-    return this.isPresent(this.labeled);
+    return isPresent(this.labeled);
   }
   @HostBinding('class.toggle')
   get isToggle() {
-    return this.isPresent(this.toggle);
+    return isPresent(this.toggle);
   }
   @HostBinding('class.vertical')
   get isVertical() {
-    return this.isPresent(this.vertical);
+    return isPresent(this.vertical);
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.attached)) {
-      this.renderer.addClass(this.el.nativeElement, this.attached);
-      this.renderer.addClass(this.el.nativeElement, 'attached');
+    if (hasValue(this.attach)) {
+      this.renderer.addClass(this.el.nativeElement, this.attach);
     }
     var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
-    if (this.hasValue(this.float)) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
     if ("undefined" !== typeof this.width) {
       this.renderer.addClass(this.el.nativeElement, numberToWord(this.width));
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }
