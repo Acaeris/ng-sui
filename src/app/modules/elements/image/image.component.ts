@@ -294,7 +294,6 @@ export class SemanticImagesComponent implements OnChanges {
   @Input('fluid') fluid?: boolean;
   @Input('rounded') rounded?: boolean;
   @Input('circular') circular?: boolean;
-  @Input('centered') centered?: boolean;
   @Input('spaced') spaced?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
