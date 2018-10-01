@@ -11,6 +11,8 @@ import {
 import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticVerticalAlignments } from '../../../defs/alignments';
 import { SemanticFloats } from '../../../defs/floats';
+import { isPresent } from '../../../libs/isPresent';
+import { hasValue } from '../../../libs/hasValue';
 
 /**
  * Implementation of Image component
@@ -24,81 +26,79 @@ import { SemanticFloats } from '../../../defs/floats';
   host: { 'class' : 'ui image' }
 })
 export class SemanticImageAttrComponent implements OnChanges {
-  @Input('disabled') disabled?: boolean;
-  @Input('hidden') hidden?: boolean;
-  @Input('avatar') avatar?: boolean;
-  @Input('bordered') bordered?: boolean;
-  @Input('fluid') fluid?: boolean;
-  @Input('rounded') rounded?: boolean;
-  @Input('circular') circular?: boolean;
-  @Input('centered') centered?: boolean;
-  @Input('spaced') spaced?: boolean;
-  @Input('size') size?: "" | SemanticSizes;
-  @Input('align') align?: "" | SemanticVerticalAlignments;
-  @Input('float') float?: "" | SemanticFloats;
-  @Input('url') url?: string;
+  @Input() disabled?: boolean;
+  @Input() hidden?: boolean;
+  @Input() avatar?: boolean;
+  @Input() bordered?: boolean;
+  @Input() fluid?: boolean;
+  @Input() rounded?: boolean;
+  @Input() circular?: boolean;
+  @Input() centered?: boolean;
+  @Input() spaced?: boolean;
+  @Input() size?: SemanticSizes;
+  @Input() align?: SemanticVerticalAlignments;
+  @Input() float?: SemanticFloats;
+  @Input() url?: string;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.align);
+  }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.hidden')
   get isHidden() {
-    return this.isPresent(this.hidden);
+    return isPresent(this.hidden);
   }
   @HostBinding('class.avatar')
   get isAvatar() {
-    return this.isPresent(this.avatar);
+    return isPresent(this.avatar);
   }
   @HostBinding('class.bordered')
   get isBordered() {
-    return this.isPresent(this.bordered);
+    return isPresent(this.bordered);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.rounded')
   get isRounded() {
-    return this.isPresent(this.rounded);
+    return isPresent(this.rounded);
   }
   @HostBinding('class.circular')
   get isCircular() {
-    return this.isPresent(this.circular);
+    return isPresent(this.circular);
   }
   @HostBinding('class.centered')
   get isCentered() {
-    return this.isPresent(this.centered);
+    return isPresent(this.centered);
   }
   @HostBinding('class.spaced')
   get isSpaced() {
-    return this.isPresent(this.spaced);
+    return isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.align) {
+    if (hasValue(this.align)) {
       this.renderer.addClass(this.el.nativeElement, this.align);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
-    if (this.hasValue(this.url)) {
+    if (hasValue(this.url)) {
       this.renderer.setAttribute(this.el.nativeElement, 'src', this.url);
     }
-    if ("undefined" !== typeof this.float) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }
 
@@ -114,78 +114,76 @@ export class SemanticImageAttrComponent implements OnChanges {
   host: { 'class' : 'ui image' }
 })
 export class SemanticImageComponent implements OnChanges {
-  @Input('disabled') disabled?: boolean;
-  @Input('hidden') hidden?: boolean;
-  @Input('avatar') avatar?: boolean;
-  @Input('bordered') bordered?: boolean;
-  @Input('fluid') fluid?: boolean;
-  @Input('rounded') rounded?: boolean;
-  @Input('circular') circular?: boolean;
-  @Input('centered') centered?: boolean;
-  @Input('spaced') spaced?: boolean;
-  @Input('size') size?: "" | SemanticSizes;
-  @Input('align') align?: "" | SemanticVerticalAlignments;
-  @Input('float') float?: "" | SemanticFloats;
-  @Input('url') url?: string;
+  @Input() disabled?: boolean;
+  @Input() hidden?: boolean;
+  @Input() avatar?: boolean;
+  @Input() bordered?: boolean;
+  @Input() fluid?: boolean;
+  @Input() rounded?: boolean;
+  @Input() circular?: boolean;
+  @Input() centered?: boolean;
+  @Input() spaced?: boolean;
+  @Input() size?: SemanticSizes;
+  @Input() align?: SemanticVerticalAlignments;
+  @Input() float?: SemanticFloats;
+  @Input() url?: string;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.align);
+  }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.hidden')
   get isHidden() {
-    return this.isPresent(this.hidden);
+    return isPresent(this.hidden);
   }
   @HostBinding('class.avatar')
   get isAvatar() {
-    return this.isPresent(this.avatar);
+    return isPresent(this.avatar);
   }
   @HostBinding('class.bordered')
   get isBordered() {
-    return this.isPresent(this.bordered);
+    return isPresent(this.bordered);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.rounded')
   get isRounded() {
-    return this.isPresent(this.rounded);
+    return isPresent(this.rounded);
   }
   @HostBinding('class.circular')
   get isCircular() {
-    return this.isPresent(this.circular);
+    return isPresent(this.circular);
   }
   @HostBinding('class.centered')
   get isCentered() {
-    return this.isPresent(this.centered);
+    return isPresent(this.centered);
   }
   @HostBinding('class.spaced')
   get isSpaced() {
-    return this.isPresent(this.spaced);
+    return isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.align) {
+    if (hasValue(this.align)) {
       this.renderer.addClass(this.el.nativeElement, this.align);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
-    if ("undefined" !== typeof this.float) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }
 
@@ -201,77 +199,75 @@ export class SemanticImageComponent implements OnChanges {
   host: { 'class' : 'ui image' }
 })
 export class SemanticSVGComponent implements OnChanges {
-  @Input('disabled') disabled?: boolean;
-  @Input('hidden') hidden?: boolean;
-  @Input('avatar') avatar?: boolean;
-  @Input('bordered') bordered?: boolean;
-  @Input('fluid') fluid?: boolean;
-  @Input('rounded') rounded?: boolean;
-  @Input('circular') circular?: boolean;
-  @Input('centered') centered?: boolean;
-  @Input('spaced') spaced?: boolean;
-  @Input('size') size?: "" | SemanticSizes;
-  @Input('align') align?: "" | SemanticVerticalAlignments;
-  @Input('float') float?: "" | SemanticFloats;
+  @Input() disabled?: boolean;
+  @Input() hidden?: boolean;
+  @Input() avatar?: boolean;
+  @Input() bordered?: boolean;
+  @Input() fluid?: boolean;
+  @Input() rounded?: boolean;
+  @Input() circular?: boolean;
+  @Input() centered?: boolean;
+  @Input() spaced?: boolean;
+  @Input() size?: SemanticSizes;
+  @Input() align?: SemanticVerticalAlignments;
+  @Input() float?: SemanticFloats;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.align);
+  }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.hidden')
   get isHidden() {
-    return this.isPresent(this.hidden);
+    return isPresent(this.hidden);
   }
   @HostBinding('class.avatar')
   get isAvatar() {
-    return this.isPresent(this.avatar);
+    return isPresent(this.avatar);
   }
   @HostBinding('class.bordered')
   get isBordered() {
-    return this.isPresent(this.bordered);
+    return isPresent(this.bordered);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.rounded')
   get isRounded() {
-    return this.isPresent(this.rounded);
+    return isPresent(this.rounded);
   }
   @HostBinding('class.circular')
   get isCircular() {
-    return this.isPresent(this.circular);
+    return isPresent(this.circular);
   }
   @HostBinding('class.centered')
   get isCentered() {
-    return this.isPresent(this.centered);
+    return isPresent(this.centered);
   }
   @HostBinding('class.spaced')
   get isSpaced() {
-    return this.isPresent(this.spaced);
+    return isPresent(this.spaced);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.align) {
+    if (hasValue(this.align)) {
       this.renderer.addClass(this.el.nativeElement, this.align);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
-    if ("undefined" !== typeof this.float) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }
 
@@ -287,66 +283,64 @@ export class SemanticSVGComponent implements OnChanges {
   host: { 'class' : 'ui images' }
 })
 export class SemanticImagesComponent implements OnChanges {
-  @Input('disabled') disabled?: boolean;
-  @Input('hidden') hidden?: boolean;
-  @Input('avatar') avatar?: boolean;
-  @Input('bordered') bordered?: boolean;
-  @Input('fluid') fluid?: boolean;
-  @Input('rounded') rounded?: boolean;
-  @Input('circular') circular?: boolean;
-  @Input('size') size?: "" | SemanticSizes;
-  @Input('align') align?: "" | SemanticVerticalAlignments;
-  @Input('float') float?: "" | SemanticFloats;
+  @Input() disabled?: boolean;
+  @Input() hidden?: boolean;
+  @Input() avatar?: boolean;
+  @Input() bordered?: boolean;
+  @Input() fluid?: boolean;
+  @Input() rounded?: boolean;
+  @Input() circular?: boolean;
+  @Input() size?: "" | SemanticSizes;
+  @Input() align?: "" | SemanticVerticalAlignments;
+  @Input() float?: "" | SemanticFloats;
+  @HostBinding('class.aligned')
+  get isAligned() {
+    return hasValue(this.align);
+  }
   @HostBinding('class.disabled')
   get isDisabled() {
-    return this.isPresent(this.disabled);
+    return isPresent(this.disabled);
   }
   @HostBinding('class.hidden')
   get isHidden() {
-    return this.isPresent(this.hidden);
+    return isPresent(this.hidden);
   }
   @HostBinding('class.avatar')
   get isAvatar() {
-    return this.isPresent(this.avatar);
+    return isPresent(this.avatar);
   }
   @HostBinding('class.bordered')
   get isBordered() {
-    return this.isPresent(this.bordered);
+    return isPresent(this.bordered);
+  }
+  @HostBinding('class.floated')
+  get isFloated() {
+    return hasValue(this.float);
   }
   @HostBinding('class.fluid')
   get isFluid() {
-    return this.isPresent(this.fluid);
+    return isPresent(this.fluid);
   }
   @HostBinding('class.rounded')
   get isRounded() {
-    return this.isPresent(this.rounded);
+    return isPresent(this.rounded);
   }
   @HostBinding('class.circular')
   get isCircular() {
-    return this.isPresent(this.circular);
+    return isPresent(this.circular);
   }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (this.hasValue(this.size)) {
+    if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.align) {
+    if (hasValue(this.align)) {
       this.renderer.addClass(this.el.nativeElement, this.align);
-      this.renderer.addClass(this.el.nativeElement, 'aligned');
     }
-    if ("undefined" !== typeof this.float) {
+    if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
-      this.renderer.addClass(this.el.nativeElement, 'floated');
     }
-  }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
   }
 }

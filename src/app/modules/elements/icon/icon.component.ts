@@ -19,7 +19,7 @@ import {
   host: { 'class' : 'icon' }
 })
 export class SemanticIconComponent implements OnInit {
-  @Input('type') type: string = "";
+  @Input() type: string = "";
   @Input('sui-icon') icon: string = "";
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
