@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SemanticHeaderComponent, SemanticSubheaderComponent } from './header.component';
+import { SemanticHeaderComponent } from './header.component';
+import { SemanticSubheaderComponent } from './subheader.component';
 import { SemanticIconModule } from '../icon/icon.module';
 import { SemanticFlagModule } from '../flag/flag.module';
 
