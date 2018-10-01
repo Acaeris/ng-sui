@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SemanticImageComponent, SemanticImageAttrComponent, SemanticSVGComponent } from './image.component';
+import { SemanticImageComponent, SemanticImageAttrComponent, SemanticImagesComponent, SemanticSVGComponent } from './image.component';
 
 @NgModule({
   imports: [
@@ -9,11 +9,13 @@ import { SemanticImageComponent, SemanticImageAttrComponent, SemanticSVGComponen
   declarations: [
     SemanticImageComponent,
     SemanticImageAttrComponent,
+    SemanticImagesComponent,
     SemanticSVGComponent
   ],
   exports: [
     SemanticImageComponent,
     SemanticImageAttrComponent,
+    SemanticImagesComponent,
     SemanticSVGComponent
   ]
 })
