@@ -25,12 +25,17 @@ import { hasValue } from '../../../libs/hasValue';
 export class SemanticInputComponent implements OnChanges {
   @Input() focus?: boolean;
   @Input() loading?: boolean;
+  @Input() disabled?: boolean;
   @Input() type?: string;
   @Input() icon?: string;
   @Input() iconSide?: string;
   @Input() flag?: string;
   @Input() placeholder?: string;
   @Input() value?: string;
+  @HostBinding('class.disabled')
+  get isDisabled() {
+    return isPresent(this.disabled);
+  }
   @HostBinding('class.focus')
   get isFocused() {
     return isPresent(this.focus);
