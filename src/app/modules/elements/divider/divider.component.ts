@@ -6,6 +6,8 @@ import {
   Renderer2,
   HostBinding
 } from '@angular/core';
+import { hasValue } from '../../../libs/hasValue';
+import { isPresent } from '../../../libs/isPresent';
 
 /**
  * Implementation of Divider component.
@@ -32,40 +34,32 @@ export class SemanticDividerComponent {
   @Input() vertical?: boolean;
   @HostBinding('class.clearing')
   get isClearing() {
-    return this.isPresent(this.clearing);
+    return isPresent(this.clearing);
   }
   @HostBinding('class.fitted')
   get isFitted() {
-    return this.isPresent(this.fitted);
+    return isPresent(this.fitted);
   }
   @HostBinding('class.hidden')
   get isHidden() {
-    return this.isPresent(this.hidden);
+    return isPresent(this.hidden);
   }
   @HostBinding('class.horizontal')
   get isHorizontal() {
-    return !this.isPresent(this.vertical) && this.hasValue(this.label);
+    return !isPresent(this.vertical) && hasValue(this.label);
   }
   @HostBinding('class.inverted')
   get isInverted() {
-    return this.isPresent(this.inverted);
+    return isPresent(this.inverted);
   }
   @HostBinding('class.section')
   get isSection() {
-    return this.isPresent(this.section);
+    return isPresent(this.section);
   }
   @HostBinding('class.vertical')
   get isVertical() {
-    return this.isPresent(this.vertical);
+    return isPresent(this.vertical);
   }
 
   constructor() { }
-
-  isPresent(key?: boolean) {
-    return "undefined" !== typeof key && !key;
-  }
-
-  hasValue(key?: string) {
-    return "undefined" !== typeof key && key !== "";
-  }
 }
