@@ -34,10 +34,6 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
   @Input('url') url?: string;
-  @HostBinding('attr.src')
-  get hasSource() {
-    return this.hasValue(this.url) ? this.url : "";
-  }
   @HostBinding('class.disabled')
   get isDisabled() {
     return this.isPresent(this.disabled);
@@ -80,6 +76,9 @@ export class SemanticImageAttrComponent implements OnChanges {
     if ("undefined" !== typeof this.align) {
       this.renderer.addClass(this.el.nativeElement, this.align);
       this.renderer.addClass(this.el.nativeElement, 'aligned');
+    }
+    if (this.hasValue(this.url)) {
+      this.renderer.setAttribute(this.el.nativeElement, 'src', this.url);
     }
   }
 
@@ -191,7 +190,6 @@ export class SemanticSVGComponent implements OnChanges {
   @Input('centered') centered?: boolean;
   @Input('size') size?: "" | SemanticSizes;
   @Input('align') align?: "" | SemanticVerticalAlignments;
-  @Input('url') url?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
     return this.isPresent(this.disabled);
