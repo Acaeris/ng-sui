@@ -20,9 +20,14 @@ import {
   host: { 'class' : 'ui input' }
 })
 export class SemanticInputComponent implements OnChanges {
+  @Input('focus') focus?: boolean;
   @Input('type') type?: string;
   @Input('placeholder') placeholder?: string;
   @Input('value') value?: string;
+  @HostBinding('class.focus')
+  get isFocused() {
+    return this.isPresent(this.focus);
+  }
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
