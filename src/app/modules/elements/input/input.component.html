@@ -1,3 +1,6 @@
 <i *ngIf="flag" sui-flag="{{ flag }}"></i>
 <i *ngIf="icon" sui-icon="{{ icon }}"></i>
+<ng-content select="[label-left]"></ng-content>
+<ng-content></ng-content>
 <input type="{{ type }}" placeholder="{{ placeholder }}" [value]="value">
+<ng-content select="[label-right]"></ng-content>

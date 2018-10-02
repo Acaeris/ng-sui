@@ -33,6 +33,7 @@ export class SemanticInputComponent implements OnChanges {
   @Input() flag?: string;
   @Input() placeholder?: string;
   @Input() value?: string;
+  @Input() label?: string;
   @HostBinding('class.disabled')
   get isDisabled() {
     return isPresent(this.disabled);
@@ -48,6 +49,10 @@ export class SemanticInputComponent implements OnChanges {
   @HostBinding('class.icon')
   get hasIcon() {
     return hasValue(this.icon) || hasValue(this.flag);
+  }
+  @HostBinding('class.labeled')
+  get isLabeled() {
+    return hasValue(this.label);
   }
   @HostBinding('class.loading')
   get isLoading() {
@@ -65,6 +70,9 @@ export class SemanticInputComponent implements OnChanges {
     }
     if ((hasValue(this.icon) || hasValue(this.flag)) && hasValue(this.iconSide)) {
       this.renderer.addClass(this.el.nativeElement, this.iconSide);
+    }
+    if (hasValue(this.label)) {
+      this.renderer.addClass(this.el.nativeElement, this.label);
     }
   }
 }
