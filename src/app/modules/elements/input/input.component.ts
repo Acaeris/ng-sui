@@ -55,6 +55,9 @@ export class SemanticInputComponent implements OnChanges {
     if (!hasValue(this.value)) {
       this.value = "";
     }
+    if (!hasValue(this.type)) {
+      this.type = "text";
+    }
     if ((hasValue(this.icon) || hasValue(this.flag)) && hasValue(this.iconSide)) {
       this.renderer.addClass(this.el.nativeElement, this.iconSide);
     }
