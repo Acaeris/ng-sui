@@ -26,6 +26,7 @@ export class SemanticInputComponent implements OnChanges {
   @Input() focus?: boolean;
   @Input() loading?: boolean;
   @Input() disabled?: boolean;
+  @Input() error?: boolean;
   @Input() type?: string;
   @Input() icon?: string;
   @Input() iconSide?: string;
@@ -35,6 +36,10 @@ export class SemanticInputComponent implements OnChanges {
   @HostBinding('class.disabled')
   get isDisabled() {
     return isPresent(this.disabled);
+  }
+  @HostBinding('class.error')
+  get isErrored() {
+    return isPresent(this.error);
   }
   @HostBinding('class.focus')
   get isFocused() {
