@@ -5,8 +5,12 @@ import {
   OnChanges,
   ElementRef,
   Renderer2,
-  HostBinding
+  HostBinding,
+  ContentChildren,
+  QueryList,
+  AfterContentChecked
 } from '@angular/core';
+import { SemanticButtonComponent } from '../button/button.component';
 
 import { isPresent } from '../../../libs/isPresent';
 import { hasValue } from '../../../libs/hasValue';
@@ -22,7 +26,7 @@ import { hasValue } from '../../../libs/hasValue';
   templateUrl: './input.component.html',
   host: { 'class' : 'ui input' }
 })
-export class SemanticInputComponent implements OnChanges {
+export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() focus?: boolean;
   @Input() loading?: boolean;
   @Input() disabled?: boolean;
@@ -34,6 +38,11 @@ export class SemanticInputComponent implements OnChanges {
   @Input() placeholder?: string;
   @Input() value?: string;
   @Input() label?: string;
+  @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
+  @HostBinding('class.action')
+  get isAction() {
+    return this.buttons.length > 0;
+  }
   @HostBinding('class.disabled')
   get isDisabled() {
     return isPresent(this.disabled);
@@ -73,6 +82,20 @@ export class SemanticInputComponent implements OnChanges {
     }
     if (hasValue(this.label)) {
       this.renderer.addClass(this.el.nativeElement, this.label);
+    }
+  }
+
+  ngAfterContentChecked() {
+    if (this.buttons.length > 0) {
+      var actionDirection: string = "left";
+
+      this.buttons.forEach(button => {
+        if (isPresent(button.after)) {
+          actionDirection = "right";
+        }
+      });
+
+      this.renderer.addClass(this.el.nativeElement, actionDirection);
     }
   }
 }

@@ -29,6 +29,7 @@ import { isPresent } from '../../../libs/isPresent';
 })
 export class SemanticButtonComponent implements OnChanges {
   @Input() active?: boolean;
+  @Input() after?: boolean;
   @Input() animate?: "" | 'fade' | 'vertical';
   @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
@@ -59,7 +60,7 @@ export class SemanticButtonComponent implements OnChanges {
     return "undefined" !== typeof this.attach;
   }
   @HostBinding('class.basic')
-  get isBasic() {
+  get isBasic(): boolean {
     return isPresent(this.basic);
   };
   @HostBinding('class.circular')
