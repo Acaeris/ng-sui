@@ -11,6 +11,7 @@ import {
   AfterContentChecked
 } from '@angular/core';
 import { SemanticButtonComponent } from '../button/button.component';
+import { SemanticLabelComponent } from '../label/label.component';
 
 import { isPresent } from '../../../libs/isPresent';
 import { hasValue } from '../../../libs/hasValue';
@@ -37,8 +38,8 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() flag?: string;
   @Input() placeholder?: string;
   @Input() value?: string;
-  @Input() label?: string;
   @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
+  @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
   @HostBinding('class.action') isAction: boolean;
   @HostBinding('class.disabled') isDisabled: boolean;
   @HostBinding('class.error') isError: boolean;
@@ -68,12 +69,6 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
       this.renderer.addClass(this.el.nativeElement, "icon");
       this.hasIcon = true;
     }
-    if (hasValue(this.label)) {
-      this.renderer.addClass(this.el.nativeElement, this.label);
-      // Enforces class order.
-      this.renderer.addClass(this.el.nativeElement, "labeled");
-      this.hasLabel = true;
-    }
   }
 
   ngAfterContentChecked() {
@@ -88,6 +83,18 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
 
       this.renderer.addClass(this.el.nativeElement, actionDirection);
       this.isAction = true;
+    }
+    if (this.labels.length > 0) {
+      var labelDirection: string = "left";
+
+      this.labels.forEach(label => {
+        if (isPresent(label.after)) {
+          labelDirection = "right";
+        }
+      });
+
+      this.renderer.addClass(this.el.nativeElement, labelDirection);
+      this.hasLabel = true;
     }
   }
 }
