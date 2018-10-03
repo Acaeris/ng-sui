@@ -5,9 +5,7 @@
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </ng-container>
 <ng-container *ngIf="labels.length > 0">
-  <sui-button [color]="color" [basic]="basic">
-    <i *ngIf="icon" sui-icon="{{icon}}"></i>
-    <i *ngIf="flag" sui-flag="{{flag}}"></i>
+  <sui-button child [icon]="icon" [flag]="flag" [color]="color" [basic]="basic">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </sui-button>
 </ng-container>

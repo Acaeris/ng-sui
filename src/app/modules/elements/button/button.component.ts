@@ -37,9 +37,10 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() animate?: "" | 'fade' | 'vertical';
   @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
+  @Input() circular?: boolean;
+  @Input() child?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
-  @Input() circular?: boolean;
   @Input() compact?: boolean;
   @Input() disabled?: boolean;
   @Input() flag?: string;
@@ -47,15 +48,12 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() fluid?: boolean;
   @Input() icon?: string;
   @Input() inverted?: boolean;
+  @Input() label?: string;
   @Input() loading?: boolean;
   @Input() size?: SemanticSizes;
   @Input() toggle?: boolean;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
-  @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
-  @HostBinding('class.active')
-  get isActive(): boolean {
-    return isPresent(this.active);
-  };
+  @HostBinding('class.active') isActive: boolean;
   @HostBinding('class.animated')
   get isAnimated(): boolean {
     return "undefined" !== typeof this.animate;
@@ -89,8 +87,8 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     return isPresent(this.fluid);
   }
   @HostBinding('class.icon')
-  get hasIcon() {
-    return (hasValue(this.icon) || hasValue(this.flag)) && this.iconClass && this.labels.length == 0 && "" === this.el.nativeElement.innerText;
+  get needsIcon() {
+    return "" === this.el.nativeElement.innerText && !isPresent(this.child) || hasValue(this.label);
   }
   @HostBinding('class.inverted')
   get isInverted() {
@@ -104,7 +102,6 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   get isToggle() {
     return isPresent(this.toggle);
   }
-  iconClass: boolean = true;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -112,6 +109,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     if ("BUTTON" !== this.el.nativeElement.tagName) {
       this.el.nativeElement.tabIndex = 0;
     }
+    this.isActive = isPresent(this.active);
     if (hasValue(this.animate)) {
       this.renderer.addClass(this.el.nativeElement, this.animate);
     }
@@ -141,6 +139,9 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
       });
 
       this.renderer.addClass(this.el.nativeElement, labelDirection);
+      this.renderer.addClass(this.el.nativeElement, "labeled");
+    } else if (hasValue(this.label)) {
+      this.renderer.addClass(this.el.nativeElement, this.label);
       this.renderer.addClass(this.el.nativeElement, "labeled");
     }
   }
