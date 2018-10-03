@@ -31,6 +31,8 @@ export class SemanticLabelComponent implements OnChanges {
   @Input() dropdown?: boolean;
   @Input() tag?: boolean;
   @Input() corner?: boolean;
+  @Input() icon?: string;
+  @Input() flag?: string;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
   @HostBinding('class.basic') isBasic: boolean;
