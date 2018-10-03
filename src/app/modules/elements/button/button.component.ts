@@ -54,54 +54,18 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() toggle?: boolean;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
   @HostBinding('class.active') isActive: boolean;
-  @HostBinding('class.animated')
-  get isAnimated(): boolean {
-    return "undefined" !== typeof this.animate;
-  }
-  @HostBinding('class.attached')
-  get isAttached(): boolean {
-    return "undefined" !== typeof this.attach;
-  }
-  @HostBinding('class.basic')
-  get isBasic(): boolean {
-    return isPresent(this.basic);
-  };
-  @HostBinding('class.circular')
-  get isCircular() {
-    return isPresent(this.circular);
-  }
-  @HostBinding('class.compact')
-  get isCompact() {
-    return isPresent(this.compact);
-  }
-  @HostBinding('class.disabled')
-  get isDisabled() {
-    return isPresent(this.disabled);
-  }
-  @HostBinding('class.floated')
-  get isFloated() {
-    return hasValue(this.float);
-  }
-  @HostBinding('class.fluid')
-  get isFluid() {
-    return isPresent(this.fluid);
-  }
-  @HostBinding('class.icon')
-  get needsIcon() {
-    return "" === this.el.nativeElement.innerText && !isPresent(this.child) || hasValue(this.label);
-  }
-  @HostBinding('class.inverted')
-  get isInverted() {
-    return isPresent(this.inverted);
-  }
-  @HostBinding('class.loading')
-  get isLoading() {
-    return isPresent(this.loading);
-  }
-  @HostBinding('class.toggle')
-  get isToggle() {
-    return isPresent(this.toggle);
-  }
+  @HostBinding('class.animated') isAnimated: boolean;
+  @HostBinding('class.attached') isAttached: boolean;
+  @HostBinding('class.basic') isBasic: boolean;
+  @HostBinding('class.circular') isCircular: boolean;
+  @HostBinding('class.compact') isCompact: boolean;
+  @HostBinding('class.disabled') isDisabled: boolean;
+  @HostBinding('class.floated') isFloated: boolean;
+  @HostBinding('class.fluid') isFluid: boolean;
+  @HostBinding('class.icon') needsIcon: boolean;
+  @HostBinding('class.inverted') isInverted: boolean;
+  @HostBinding('class.loading') isLoading: boolean;
+  @HostBinding('class.toggle') isToggle: boolean;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -110,18 +74,29 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
       this.el.nativeElement.tabIndex = 0;
     }
     this.isActive = isPresent(this.active);
+    this.isBasic = isPresent(this.basic);
+    this.isCircular = isPresent(this.circular);
+    this.isCompact = isPresent(this.compact);
+    this.isDisabled = isPresent(this.disabled);
+    this.isFluid = isPresent(this.fluid);
+    this.isInverted = isPresent(this.inverted);
+    this.isLoading = isPresent(this.loading);
+    this.isToggle = isPresent(this.toggle);
+    this.isAnimated = "undefined" !== typeof this.animate;
     if (hasValue(this.animate)) {
       this.renderer.addClass(this.el.nativeElement, this.animate);
     }
     if (hasValue(this.attach)) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
+    this.isAttached = "undefined" !== typeof this.attach;
     var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
     if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
+      this.isFloated = true;
     }
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
@@ -144,5 +119,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
       this.renderer.addClass(this.el.nativeElement, this.label);
       this.renderer.addClass(this.el.nativeElement, "labeled");
     }
+
+    this.needsIcon = "" === this.el.nativeElement.innerText && !isPresent(this.child) || hasValue(this.label);
   }
 }
