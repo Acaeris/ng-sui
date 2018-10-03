@@ -39,34 +39,13 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() value?: string;
   @Input() label?: string;
   @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
-  @HostBinding('class.action')
-  get isAction() {
-    return this.buttons.length > 0;
-  }
-  @HostBinding('class.disabled')
-  get isDisabled() {
-    return isPresent(this.disabled);
-  }
-  @HostBinding('class.error')
-  get isErrored() {
-    return isPresent(this.error);
-  }
-  @HostBinding('class.focus')
-  get isFocused() {
-    return isPresent(this.focus);
-  }
-  @HostBinding('class.icon')
-  get hasIcon() {
-    return hasValue(this.icon) || hasValue(this.flag);
-  }
-  @HostBinding('class.labeled')
-  get isLabeled() {
-    return hasValue(this.label);
-  }
-  @HostBinding('class.loading')
-  get isLoading() {
-    return isPresent(this.loading);
-  }
+  @HostBinding('class.action') isAction: boolean;
+  @HostBinding('class.disabled') isDisabled: boolean;
+  @HostBinding('class.error') isError: boolean;
+  @HostBinding('class.focus') isFocus: boolean;
+  @HostBinding('class.icon') hasIcon: boolean;
+  @HostBinding('class.labeled') hasLabel: boolean;
+  @HostBinding('class.loading') isLoading: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -77,11 +56,23 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
     if (!hasValue(this.type)) {
       this.type = "text";
     }
-    if ((hasValue(this.icon) || hasValue(this.flag)) && hasValue(this.iconSide)) {
-      this.renderer.addClass(this.el.nativeElement, this.iconSide);
+    this.isDisabled = isPresent(this.disabled);
+    this.isError = isPresent(this.error);
+    this.isFocus = isPresent(this.focus);
+    this.isLoading = isPresent(this.loading);
+    if (hasValue(this.icon) || hasValue(this.flag)) {
+      if (hasValue(this.iconSide)) {
+        this.renderer.addClass(this.el.nativeElement, this.iconSide);
+      }
+      // Enforces class order.
+      this.renderer.addClass(this.el.nativeElement, "icon");
+      this.hasIcon = true;
     }
     if (hasValue(this.label)) {
       this.renderer.addClass(this.el.nativeElement, this.label);
+      // Enforces class order.
+      this.renderer.addClass(this.el.nativeElement, "labeled");
+      this.hasLabel = true;
     }
   }
 
@@ -96,6 +87,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
       });
 
       this.renderer.addClass(this.el.nativeElement, actionDirection);
+      this.isAction = true;
     }
   }
 }
