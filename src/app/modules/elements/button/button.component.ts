@@ -5,8 +5,12 @@ import {
   ElementRef,
   Renderer2,
   OnChanges,
-  HostBinding
+  HostBinding,
+  ContentChildren,
+  QueryList,
+  AfterContentChecked
 } from '@angular/core';
+import { SemanticLabelComponent } from '../label/label.component';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSocial } from '../../../defs/social';
 import { SemanticFloats } from '../../../defs/floats';
@@ -27,7 +31,7 @@ import { isPresent } from '../../../libs/isPresent';
   templateUrl: './button.component.html',
   host: { 'class' : 'ui button' }
 })
-export class SemanticButtonComponent implements OnChanges {
+export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() active?: boolean;
   @Input() after?: boolean;
   @Input() animate?: "" | 'fade' | 'vertical';
@@ -43,10 +47,10 @@ export class SemanticButtonComponent implements OnChanges {
   @Input() fluid?: boolean;
   @Input() icon?: string;
   @Input() inverted?: boolean;
-  @Input() label?: 'right' | 'left';
   @Input() loading?: boolean;
   @Input() size?: SemanticSizes;
   @Input() toggle?: boolean;
+  @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
   @HostBinding('class.active')
   get isActive(): boolean {
     return isPresent(this.active);
@@ -85,15 +89,11 @@ export class SemanticButtonComponent implements OnChanges {
   }
   @HostBinding('class.icon')
   get hasIcon() {
-    return ((hasValue(this.icon) || hasValue(this.flag)) && hasValue(this.label)) || "" === this.el.nativeElement.innerText;
+    return ((hasValue(this.icon) || hasValue(this.flag)) && !this.label) || "" === this.el.nativeElement.innerText;
   }
   @HostBinding('class.inverted')
   get isInverted() {
     return isPresent(this.inverted);
-  }
-  @HostBinding('class.labeled')
-  get isLabeled() {
-    return hasValue(this.label);
   }
   @HostBinding('class.loading')
   get isLoading() {
@@ -103,6 +103,7 @@ export class SemanticButtonComponent implements OnChanges {
   get isToggle() {
     return isPresent(this.toggle);
   }
+  label: boolean = false;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -123,11 +124,24 @@ export class SemanticButtonComponent implements OnChanges {
     if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
     }
-    if (hasValue(this.label)) {
-      this.renderer.addClass(this.el.nativeElement, this.label);
-    }
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
+    }
+  }
+
+  ngAfterContentChecked() {
+    if (this.labels.length > 0) {
+      var labelDirection: string = "left";
+
+      this.labels.forEach(label => {
+        if (isPresent(label.after)) {
+          labelDirection = "right";
+        }
+      });
+
+      this.renderer.addClass(this.el.nativeElement, labelDirection);
+      this.renderer.addClass(this.el.nativeElement, "labeled");
+      this.label = true;
     }
   }
 }
