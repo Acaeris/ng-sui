@@ -30,6 +30,7 @@ export class SemanticLabelComponent implements OnChanges {
   @Input() point?: boolean;
   @Input() dropdown?: boolean;
   @Input() tag?: boolean;
+  @Input() corner?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
   @HostBinding('class.basic') isBasic: boolean;
@@ -45,6 +46,10 @@ export class SemanticLabelComponent implements OnChanges {
     if (isPresent(this.point)) {
       this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "left" : "right");
       this.renderer.addClass(this.el.nativeElement, "pointing");
+    }
+    if (isPresent(this.corner)) {
+      this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "right" : "left");
+      this.renderer.addClass(this.el.nativeElement, "corner");
     }
     var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {

@@ -45,6 +45,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.error') isError: boolean;
   @HostBinding('class.focus') isFocus: boolean;
   @HostBinding('class.icon') hasIcon: boolean;
+  @HostBinding('class.corner') hasCornerLabel: boolean;
   @HostBinding('class.labeled') hasLabel: boolean;
   @HostBinding('class.loading') isLoading: boolean;
 
@@ -90,6 +91,9 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
       this.labels.forEach(label => {
         if (isPresent(label.after)) {
           labelDirection = "right";
+        }
+        if (isPresent(label.corner)) {
+          this.hasCornerLabel = true;
         }
       });
 
