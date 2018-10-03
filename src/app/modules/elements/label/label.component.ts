@@ -28,16 +28,20 @@ export class SemanticLabelComponent implements OnChanges {
   @Input() after?: boolean;
   @Input() basic?: boolean;
   @Input() point?: boolean;
+  @Input() dropdown?: boolean;
+  @Input() tag?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
-  @HostBinding('class.basic')
-  get isBasic(): boolean {
-    return isPresent(this.basic);
-  }
+  @HostBinding('class.basic') isBasic: boolean;
+  @HostBinding('class.dropdown') isDropdown: boolean;
+  @HostBinding('class.tag') isTag: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
+    this.isBasic = isPresent(this.basic);
+    this.isDropdown = isPresent(this.dropdown);
+    this.isTag = isPresent(this.tag);
     if (isPresent(this.point)) {
       this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "left" : "right");
       this.renderer.addClass(this.el.nativeElement, "pointing");
