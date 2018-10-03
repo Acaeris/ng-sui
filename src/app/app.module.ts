@@ -10,6 +10,7 @@ import { SemanticHeaderModule } from './modules/elements/header/header.module';
 import { SemanticIconModule } from './modules/elements/icon/icon.module';
 import { SemanticImageModule } from './modules/elements/image/image.module';
 import { SemanticInputModule } from './modules/elements/input/input.module';
+import { SemanticLabelModule } from './modules/elements/label/label.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SemanticInputModule } from './modules/elements/input/input.module';
     SemanticHeaderModule,
     SemanticIconModule,
     SemanticImageModule,
-    SemanticInputModule
+    SemanticInputModule,
+    SemanticLabelModule
   ],
   providers: [],
   bootstrap: [AppComponent]

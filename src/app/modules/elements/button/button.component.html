@@ -5,7 +5,7 @@
   <ng-container *ngTemplateOutlet="content"></ng-container>
 </ng-container>
 <ng-container *ngIf="label">
-  <sui-button icon="{{icon}}" flag="{{flag}}">
+  <sui-button [icon]="icon" [flag]="flag" [color]="color">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </sui-button>
 </ng-container>

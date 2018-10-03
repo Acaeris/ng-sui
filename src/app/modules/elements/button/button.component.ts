@@ -117,7 +117,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     if (hasValue(this.attach)) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
-    var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
+    var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
