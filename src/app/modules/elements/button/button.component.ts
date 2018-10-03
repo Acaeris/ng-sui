@@ -43,6 +43,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     | "negative" | SemanticSocial;
   @Input() compact?: boolean;
   @Input() disabled?: boolean;
+  @Input() dropdown?: boolean;
   @Input() flag?: string;
   @Input() float?: SemanticFloats;
   @Input() fluid?: boolean;
@@ -66,6 +67,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.inverted') isInverted: boolean;
   @HostBinding('class.loading') isLoading: boolean;
   @HostBinding('class.toggle') isToggle: boolean;
+  @HostBinding('class.dropdown') isDropdown: boolean;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -82,6 +84,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     this.isInverted = isPresent(this.inverted);
     this.isLoading = isPresent(this.loading);
     this.isToggle = isPresent(this.toggle);
+    this.isDropdown = isPresent(this.dropdown);
     this.isAnimated = "undefined" !== typeof this.animate;
     if (hasValue(this.animate)) {
       this.renderer.addClass(this.el.nativeElement, this.animate);
