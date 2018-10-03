@@ -51,6 +51,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() size?: SemanticSizes;
   @Input() toggle?: boolean;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
+  @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
   @HostBinding('class.active')
   get isActive(): boolean {
     return isPresent(this.active);
@@ -89,7 +90,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   }
   @HostBinding('class.icon')
   get hasIcon() {
-    return ((hasValue(this.icon) || hasValue(this.flag)) && !this.label) || "" === this.el.nativeElement.innerText;
+    return (hasValue(this.icon) || hasValue(this.flag)) && this.iconClass && this.labels.length == 0 && "" === this.el.nativeElement.innerText;
   }
   @HostBinding('class.inverted')
   get isInverted() {
@@ -103,7 +104,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   get isToggle() {
     return isPresent(this.toggle);
   }
-  label: boolean = false;
+  iconClass: boolean = true;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -141,7 +142,6 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
 
       this.renderer.addClass(this.el.nativeElement, labelDirection);
       this.renderer.addClass(this.el.nativeElement, "labeled");
-      this.label = true;
     }
   }
 }
