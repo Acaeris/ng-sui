@@ -28,12 +28,13 @@ import { hasValue } from '../../../libs/hasValue';
 export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() after?: boolean;
   @Input() basic?: boolean;
-  @Input() point?: string;
   @Input() dropdown?: boolean;
   @Input() tag?: boolean;
   @Input() corner?: boolean;
   @Input() icon?: string;
   @Input() flag?: string;
+  @Input() point?: string;
+  @Input() ribbon?: string;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
   @HostBinding('class.basic') isBasic: boolean;
@@ -50,6 +51,10 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
     if (hasValue(this.point)) {
       this.renderer.addClass(this.el.nativeElement, this.point);
       this.renderer.addClass(this.el.nativeElement, "pointing");
+    }
+    if (hasValue(this.ribbon)) {
+      this.renderer.addClass(this.el.nativeElement, this.ribbon);
+      this.renderer.addClass(this.el.nativeElement, "ribbon");
     }
     if (isPresent(this.corner)) {
       this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "right" : "left");
