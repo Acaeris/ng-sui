@@ -17,7 +17,7 @@ import { hasValue } from '../../../libs/hasValue';
 /**
  * Implementation of Label component
  *
- * @link http://semantic-ui.com/elements/input.html
+ * @link http://semantic-ui.com/elements/label.html
  */
 @Component({
   selector: '[sui-label], sui-label',
@@ -28,7 +28,7 @@ import { hasValue } from '../../../libs/hasValue';
 export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() after?: boolean;
   @Input() basic?: boolean;
-  @Input() point?: boolean;
+  @Input() point?: string;
   @Input() dropdown?: boolean;
   @Input() tag?: boolean;
   @Input() corner?: boolean;
@@ -47,8 +47,8 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
     this.isBasic = isPresent(this.basic);
     this.isDropdown = isPresent(this.dropdown);
     this.isTag = isPresent(this.tag);
-    if (isPresent(this.point)) {
-      this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "left" : "right");
+    if (hasValue(this.point)) {
+      this.renderer.addClass(this.el.nativeElement, this.point);
       this.renderer.addClass(this.el.nativeElement, "pointing");
     }
     if (isPresent(this.corner)) {
