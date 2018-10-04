@@ -33,6 +33,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() disabled?: boolean;
   @Input() error?: boolean;
   @Input() transparent?: boolean;
+  @Input() inverted?: boolean;
   @Input() type?: string;
   @Input() icon?: string;
   @Input() iconSide?: string;
@@ -50,6 +51,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.labeled') hasLabel: boolean;
   @HostBinding('class.loading') isLoading: boolean;
   @HostBinding('class.transparent') isTransparent: boolean;
+  @HostBinding('class.inverted') isInverted: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -65,6 +67,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
     this.isFocus = isPresent(this.focus);
     this.isLoading = isPresent(this.loading);
     this.isTransparent = isPresent(this.transparent);
+    this.isInverted = isPresent(this.inverted);
     if (hasValue(this.icon) || hasValue(this.flag)) {
       if (hasValue(this.iconSide)) {
         this.renderer.addClass(this.el.nativeElement, this.iconSide);
