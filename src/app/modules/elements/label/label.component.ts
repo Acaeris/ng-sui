@@ -5,7 +5,8 @@ import {
   OnChanges,
   ElementRef,
   Renderer2,
-  HostBinding
+  HostBinding,
+  AfterContentChecked
 } from '@angular/core';
 
 import { SemanticColors } from '../../../defs/colors';
@@ -24,7 +25,7 @@ import { hasValue } from '../../../libs/hasValue';
   templateUrl: './label.component.html',
   host: { 'class' : 'ui label' }
 })
-export class SemanticLabelComponent implements OnChanges {
+export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() after?: boolean;
   @Input() basic?: boolean;
   @Input() point?: boolean;
@@ -38,6 +39,7 @@ export class SemanticLabelComponent implements OnChanges {
   @HostBinding('class.basic') isBasic: boolean;
   @HostBinding('class.dropdown') isDropdown: boolean;
   @HostBinding('class.tag') isTag: boolean;
+  @HostBinding('class.image') hasImage: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -56,6 +58,13 @@ export class SemanticLabelComponent implements OnChanges {
     var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
+    }
+  }
+
+  ngAfterContentChecked() {
+    let images = this.el.nativeElement.querySelectorAll('img');
+    if (null != images && images.length > 0) {
+      this.hasImage = true;
     }
   }
 }
