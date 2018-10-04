@@ -13,6 +13,7 @@ import {
 import { SemanticButtonComponent } from '../button/button.component';
 import { SemanticLabelComponent } from '../label/label.component';
 
+import { SemanticSizes } from '../../../defs/sizes';
 import { isPresent } from '../../../libs/isPresent';
 import { hasValue } from '../../../libs/hasValue';
 
@@ -41,6 +42,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() flag?: string;
   @Input() placeholder?: string;
   @Input() value?: string;
+  @Input() size?: SemanticSizes;
   @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
   @HostBinding('class.action') isAction: boolean;
@@ -78,6 +80,9 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
       // Enforces class order.
       this.renderer.addClass(this.el.nativeElement, "icon");
       this.hasIcon = true;
+    }
+    if (hasValue(this.size)) {
+      this.renderer.addClass(this.el.nativeElement, this.size);
     }
   }
 
