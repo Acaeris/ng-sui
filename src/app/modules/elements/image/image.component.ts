@@ -38,7 +38,6 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input() size?: SemanticSizes;
   @Input() align?: SemanticVerticalAlignments;
   @Input() float?: SemanticFloats;
-  @Input() url?: string;
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);
@@ -93,9 +92,6 @@ export class SemanticImageAttrComponent implements OnChanges {
     if (hasValue(this.align)) {
       this.renderer.addClass(this.el.nativeElement, this.align);
     }
-    if (hasValue(this.url)) {
-      this.renderer.setAttribute(this.el.nativeElement, 'src', this.url);
-    }
     if (hasValue(this.float)) {
       this.renderer.addClass(this.el.nativeElement, this.float);
     }
@@ -126,7 +122,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input() size?: SemanticSizes;
   @Input() align?: SemanticVerticalAlignments;
   @Input() float?: SemanticFloats;
-  @Input() url?: string;
+  @Input() src?: string;
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);
