@@ -31,6 +31,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() dropdown?: boolean;
   @Input() tag?: boolean;
   @Input() corner?: boolean;
+  @Input() horizontal?: boolean;
   @Input() icon?: string;
   @Input() flag?: string;
   @Input() point?: string;
@@ -43,6 +44,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.dropdown') isDropdown: boolean;
   @HostBinding('class.tag') isTag: boolean;
   @HostBinding('class.image') hasImage: boolean;
+  @HostBinding('class.horizontal') isHorizontal: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -50,6 +52,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
     this.isBasic = isPresent(this.basic);
     this.isDropdown = isPresent(this.dropdown);
     this.isTag = isPresent(this.tag);
+    this.isHorizontal = isPresent(this.horizontal);
     if (hasValue(this.point)) {
       this.renderer.addClass(this.el.nativeElement, this.point);
       this.renderer.addClass(this.el.nativeElement, "pointing");
