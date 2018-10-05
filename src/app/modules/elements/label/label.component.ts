@@ -33,7 +33,9 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() corner?: boolean;
   @Input() horizontal?: boolean;
   @Input() floating?: boolean;
+  @Input() circular?: boolean;
   @Input() icon?: string;
+  @Input() iconSide?: string;
   @Input() flag?: string;
   @Input() point?: string;
   @Input() ribbon?: string;
@@ -47,6 +49,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.image') hasImage: boolean;
   @HostBinding('class.horizontal') isHorizontal: boolean;
   @HostBinding('class.floating') isFloating: boolean;
+  @HostBinding('class.circular') isCircular: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -56,6 +59,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
     this.isTag = isPresent(this.tag);
     this.isHorizontal = isPresent(this.horizontal);
     this.isFloating = isPresent(this.floating);
+    this.isCircular = isPresent(this.circular);
     if (hasValue(this.point)) {
       this.renderer.addClass(this.el.nativeElement, this.point);
       this.renderer.addClass(this.el.nativeElement, "pointing");

@@ -1,3 +1,4 @@
 <i *ngIf="flag" sui-flag="{{ flag }}"></i>
-<i *ngIf="icon" sui-icon="{{ icon }}"></i>
+<i *ngIf="icon && 'right' !== iconSide" sui-icon="{{ icon }}"></i>
 <ng-content></ng-content>
+<i *ngIf="icon && 'right' === iconSide" sui-icon="{{ icon }}"></i>
