@@ -84,9 +84,10 @@ export class SemanticHeaderComponent implements OnChanges {
     if (hasValue(this.attach) && "both" !== this.attach) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
-    var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
-    for (var i = 0; i < colors.length; i++) {
-      this.renderer.addClass(this.el.nativeElement, colors[i]);
+    if (hasValue(this.color)) {
+      for (var color of this.color.split(" ")) {
+        this.renderer.addClass(this.el.nativeElement, color);
+      }
     }
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);

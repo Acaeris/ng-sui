@@ -77,14 +77,14 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
       this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "right" : "left");
       this.renderer.addClass(this.el.nativeElement, "corner");
     }
-    let colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
-    for (var i = 0; i < colors.length; i++) {
-      this.renderer.addClass(this.el.nativeElement, colors[i]);
+    if (hasValue(this.color)) {
+      for (var color of this.color.split(" ")) {
+        this.renderer.addClass(this.el.nativeElement, color);
+      }
     }
     if (hasValue(this.attach)) {
-      let attachParts: string[] = this.attach.split(" ");
-      for (var i = 0; i < attachParts.length; i++) {
-        this.renderer.addClass(this.el.nativeElement, attachParts[i]);
+      for (var part of this.attach.split(" ")) {
+        this.renderer.addClass(this.el.nativeElement, part);
       }
       this.isAttached = true;
     }
