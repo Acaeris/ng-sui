@@ -35,8 +35,10 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() flag?: string;
   @Input() point?: string;
   @Input() ribbon?: string;
+  @Input() attach?: string;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
+  @HostBinding('class.attached') isAttached: boolean;
   @HostBinding('class.basic') isBasic: boolean;
   @HostBinding('class.dropdown') isDropdown: boolean;
   @HostBinding('class.tag') isTag: boolean;
@@ -60,9 +62,16 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
       this.renderer.addClass(this.el.nativeElement, isPresent(this.after) ? "right" : "left");
       this.renderer.addClass(this.el.nativeElement, "corner");
     }
-    var colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
+    let colors: string[] = (hasValue(this.color)) ? this.color.split(" ") : [];
     for (var i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
+    }
+    if (hasValue(this.attach)) {
+      let attachParts: string[] = this.attach.split(" ");
+      for (var i = 0; i < attachParts.length; i++) {
+        this.renderer.addClass(this.el.nativeElement, attachParts[i]);
+      }
+      this.isAttached = true;
     }
   }
 
