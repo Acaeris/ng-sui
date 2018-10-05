@@ -9,6 +9,7 @@ import {
   AfterContentChecked
 } from '@angular/core';
 
+import { SemanticSizes } from '../../../defs/sizes';
 import { SemanticColors } from '../../../defs/colors';
 import { SemanticSocial } from '../../../defs/social';
 import { isPresent } from '../../../libs/isPresent';
@@ -42,6 +43,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() iconSide?: string;
   @Input() point?: string;
   @Input() ribbon?: string;
+  @Input() size?: SemanticSizes;
   @Input() tag?: boolean;
   @HostBinding('class.attached') isAttached: boolean;
   @HostBinding('class.basic') isBasic: boolean;
@@ -85,6 +87,9 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
         this.renderer.addClass(this.el.nativeElement, attachParts[i]);
       }
       this.isAttached = true;
+    }
+    if (hasValue(this.size)) {
+      this.renderer.addClass(this.el.nativeElement, this.size);
     }
   }
 
