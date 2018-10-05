@@ -27,21 +27,22 @@ import { hasValue } from '../../../libs/hasValue';
 })
 export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @Input() after?: boolean;
-  @Input() basic?: boolean;
-  @Input() dropdown?: boolean;
-  @Input() tag?: boolean;
-  @Input() corner?: boolean;
-  @Input() horizontal?: boolean;
-  @Input() floating?: boolean;
-  @Input() circular?: boolean;
-  @Input() icon?: string;
-  @Input() iconSide?: string;
-  @Input() flag?: string;
-  @Input() point?: string;
-  @Input() ribbon?: string;
   @Input() attach?: string;
+  @Input() basic?: boolean;
+  @Input() circular?: boolean;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
+  @Input() corner?: boolean;
+  @Input() dropdown?: boolean;
+  @Input() empty?: boolean;
+  @Input() flag?: string;
+  @Input() floating?: boolean;
+  @Input() horizontal?: boolean;
+  @Input() icon?: string;
+  @Input() iconSide?: string;
+  @Input() point?: string;
+  @Input() ribbon?: string;
+  @Input() tag?: boolean;
   @HostBinding('class.attached') isAttached: boolean;
   @HostBinding('class.basic') isBasic: boolean;
   @HostBinding('class.dropdown') isDropdown: boolean;
@@ -50,6 +51,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.horizontal') isHorizontal: boolean;
   @HostBinding('class.floating') isFloating: boolean;
   @HostBinding('class.circular') isCircular: boolean;
+  @HostBinding('class.empty') isEmpty: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
@@ -60,6 +62,7 @@ export class SemanticLabelComponent implements OnChanges, AfterContentChecked {
     this.isHorizontal = isPresent(this.horizontal);
     this.isFloating = isPresent(this.floating);
     this.isCircular = isPresent(this.circular);
+    this.isEmpty = isPresent(this.empty);
     if (hasValue(this.point)) {
       this.renderer.addClass(this.el.nativeElement, this.point);
       this.renderer.addClass(this.el.nativeElement, "pointing");
