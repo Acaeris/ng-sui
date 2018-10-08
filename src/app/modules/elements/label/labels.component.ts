@@ -26,13 +26,23 @@ import { hasValue } from '../../../libs/hasValue';
   host: { 'class' : 'ui labels' }
 })
 export class SemanticLabelsComponent implements OnChanges {
+  @Input() tag?: boolean
   @Input() size?: SemanticSizes;
+  @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
+    | "negative" | SemanticSocial;
+  @HostBinding('class.tag') isTag: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
+    this.isTag = isPresent(this.tag);
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
+    }
+    if (hasValue(this.color)) {
+      for (var color of this.color.split(" ")) {
+        this.renderer.addClass(this.el.nativeElement, color);
+      }
     }
   }
 }
