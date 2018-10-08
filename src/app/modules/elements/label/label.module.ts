@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SemanticLabelComponent } from './label.component';
+import { SemanticLabelsComponent } from './labels.component';
 import { SemanticIconModule } from '../icon/icon.module';
 import { SemanticFlagModule } from '../flag/flag.module';
 
@@ -11,10 +12,12 @@ import { SemanticFlagModule } from '../flag/flag.module';
     SemanticFlagModule
   ],
   declarations: [
-    SemanticLabelComponent
+    SemanticLabelComponent,
+    SemanticLabelsComponent
   ],
   exports: [
-    SemanticLabelComponent
+    SemanticLabelComponent,
+    SemanticLabelsComponent
   ]
 })
 export class SemanticLabelModule { }
