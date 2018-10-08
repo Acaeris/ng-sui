@@ -26,16 +26,19 @@ import { hasValue } from '../../../libs/hasValue';
   host: { 'class' : 'ui labels' }
 })
 export class SemanticLabelsComponent implements OnChanges {
-  @Input() tag?: boolean
+  @Input() circular?: boolean;
+  @Input() tag?: boolean;
   @Input() size?: SemanticSizes;
   @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
     | "negative" | SemanticSocial;
   @HostBinding('class.tag') isTag: boolean;
+  @HostBinding('class.circular') isCircular: boolean;
 
   constructor(private el:ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
     this.isTag = isPresent(this.tag);
+    this.isCircular = isPresent(this.circular);
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
