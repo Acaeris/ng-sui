@@ -1,3 +1,3 @@
 export function isPresent(key?: boolean) {
-  return "undefined" !== typeof key && !key;
+  return 'undefined' !== typeof key && !key;
 }

@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   OnChanges,
   ElementRef,
-  Renderer2
+  Renderer2,
+  HostBinding
 } from '@angular/core';
 
 /**
@@ -15,23 +16,23 @@ import {
 @Component({
   selector: '[sui-flag], sui-flag',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '',
-  host: { 'class' : 'flag' }
+  template: ''
 })
 export class SemanticFlagComponent implements OnChanges {
   @Input() code?: string;
   @Input('sui-flag') flag?: string;
+  @HostBinding('class') cssClass = 'flag';
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    var entries: string[] = [];
-    if ("" !== this.flag) {
-      entries = this.flag.split(" ");
+    let entries: string[] = [];
+    if ('' !== this.flag) {
+      entries = this.flag.split(' ');
     } else {
-      entries = this.code.split(" ");
+      entries = this.code.split(' ');
     }
-    for (var i = 0; i < entries.length; i++) {
+    for (let i = 0; i < entries.length; i++) {
       this.renderer.addClass(this.el.nativeElement, entries[i]);
     }
   }

@@ -22,8 +22,7 @@ import { hasValue } from '../../../libs/hasValue';
 @Component({
   selector: '[sui-img]',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '',
-  host: { 'class' : 'ui image' }
+  template: ''
 })
 export class SemanticImageAttrComponent implements OnChanges {
   @Input() disabled?: boolean;
@@ -38,6 +37,7 @@ export class SemanticImageAttrComponent implements OnChanges {
   @Input() size?: SemanticSizes;
   @Input() align?: SemanticVerticalAlignments;
   @Input() float?: SemanticFloats;
+  @HostBinding('class') cssClass = 'ui image';
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);
@@ -106,8 +106,7 @@ export class SemanticImageAttrComponent implements OnChanges {
 @Component({
   selector: 'sui-img',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './image.component.html',
-  host: { 'class' : 'ui image' }
+  templateUrl: './image.component.html'
 })
 export class SemanticImageComponent implements OnChanges {
   @Input() disabled?: boolean;
@@ -123,6 +122,7 @@ export class SemanticImageComponent implements OnChanges {
   @Input() align?: SemanticVerticalAlignments;
   @Input() float?: SemanticFloats;
   @Input() src?: string;
+  @HostBinding('class') cssClass = 'ui image';
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);
@@ -191,8 +191,7 @@ export class SemanticImageComponent implements OnChanges {
 @Component({
   selector: 'sui-svg',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './svg.component.html',
-  host: { 'class' : 'ui image' }
+  templateUrl: './svg.component.html'
 })
 export class SemanticSVGComponent implements OnChanges {
   @Input() disabled?: boolean;
@@ -207,6 +206,7 @@ export class SemanticSVGComponent implements OnChanges {
   @Input() size?: SemanticSizes;
   @Input() align?: SemanticVerticalAlignments;
   @Input() float?: SemanticFloats;
+  @HostBinding('class') cssClass = 'ui image';
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);
@@ -275,8 +275,7 @@ export class SemanticSVGComponent implements OnChanges {
 @Component({
   selector: '[sui-images], sui-images',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './images.component.html',
-  host: { 'class' : 'ui images' }
+  templateUrl: './images.component.html'
 })
 export class SemanticImagesComponent implements OnChanges {
   @Input() disabled?: boolean;
@@ -286,9 +285,10 @@ export class SemanticImagesComponent implements OnChanges {
   @Input() fluid?: boolean;
   @Input() rounded?: boolean;
   @Input() circular?: boolean;
-  @Input() size?: "" | SemanticSizes;
-  @Input() align?: "" | SemanticVerticalAlignments;
-  @Input() float?: "" | SemanticFloats;
+  @Input() size?: '' | SemanticSizes;
+  @Input() align?: '' | SemanticVerticalAlignments;
+  @Input() float?: '' | SemanticFloats;
+  @HostBinding('class') cssClass = 'ui image';
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.align);

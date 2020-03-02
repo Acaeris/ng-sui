@@ -2,8 +2,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   Input,
-  ElementRef,
-  Renderer2,
   HostBinding
 } from '@angular/core';
 import { hasValue } from '../../../libs/hasValue';
@@ -19,8 +17,7 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: 'div[sui-divider]',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './divider.component.html',
-  host: { 'class' : 'ui divider' }
+  templateUrl: './divider.component.html'
 })
 export class SemanticDividerComponent {
   @Input() label?: string;
@@ -32,6 +29,7 @@ export class SemanticDividerComponent {
   @Input() inverted?: boolean;
   @Input() section?: boolean;
   @Input() vertical?: boolean;
+  @HostBinding('class') cssClass = 'ui divider';
   @HostBinding('class.clearing')
   get isClearing() {
     return isPresent(this.clearing);

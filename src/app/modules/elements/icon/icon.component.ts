@@ -4,7 +4,8 @@ import {
   ChangeDetectionStrategy,
   OnInit,
   ElementRef,
-  Renderer2
+  Renderer2,
+  HostBinding
 } from '@angular/core';
 
 /**
@@ -15,23 +16,23 @@ import {
 @Component({
   selector: '[sui-icon], sui-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '',
-  host: { 'class' : 'icon' }
+  template: ''
 })
 export class SemanticIconComponent implements OnInit {
-  @Input() type: string = "";
-  @Input('sui-icon') icon: string = "";
+  @Input() type = '';
+  @Input('sui-icon') icon = '';
+  @HostBinding('class') cssClass = 'icon';
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {
-    var entries: string[] = [];
-    if ("" !== this.icon) {
-      entries = this.icon.split(" ");
+    let entries: string[] = [];
+    if ('' !== this.icon) {
+      entries = this.icon.split(' ');
     } else {
-      entries = this.type.split(" ");
+      entries = this.type.split(' ');
     }
-    for (var i = 0; i < entries.length; i++) {
+    for (let i = 0; i < entries.length; i++) {
       this.renderer.addClass(this.el.nativeElement, entries[i]);
     }
   }

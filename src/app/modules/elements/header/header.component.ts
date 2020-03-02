@@ -23,16 +23,15 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: '[sui-header], sui-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './header.component.html',
-  host: { 'class' : 'ui header' }
+  templateUrl: './header.component.html'
 })
 export class SemanticHeaderComponent implements OnChanges {
   @Input() icon?: string;
   @Input() flag?: string;
   @Input() image?: string;
-  @Input() align?: "" | SemanticTextAlignments;
-  @Input() float?: "" | SemanticFloats;
-  @Input() attach?: "" | "both" | "top" | "bottom";
+  @Input() align?: '' | SemanticTextAlignments;
+  @Input() float?: '' | SemanticFloats;
+  @Input() attach?: '' | 'both' | 'top' | 'bottom';
   @Input() bulleted?: boolean;
   @Input() inverted?: boolean;
   @Input() dividing?: boolean;
@@ -41,9 +40,10 @@ export class SemanticHeaderComponent implements OnChanges {
   @Input() disabled?: boolean;
   @Input() size?: SemanticSizes;
   @Input() sub?: string;
+  @HostBinding('class') cssClass = 'ui header';
   @HostBinding('class.aligned')
   get isAligned() {
-    return hasValue(this.align) && "justify" !== this.align;
+    return hasValue(this.align) && 'justify' !== this.align;
   }
   @HostBinding('class.attached')
   get isAttached() {
@@ -75,24 +75,24 @@ export class SemanticHeaderComponent implements OnChanges {
   }
   @HostBinding('class.justify')
   get isJustified() {
-    return hasValue(this.align) && "justify" === this.align;
+    return hasValue(this.align) && 'justify' === this.align;
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if (hasValue(this.attach) && "both" !== this.attach) {
+    if (hasValue(this.attach) && 'both' !== this.attach) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
     if (hasValue(this.color)) {
-      for (var color of this.color.split(" ")) {
+      for (const color of this.color.split(' ')) {
         this.renderer.addClass(this.el.nativeElement, color);
       }
     }
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if (hasValue(this.align) && "justify" !== this.align) {
+    if (hasValue(this.align) && 'justify' !== this.align) {
       this.renderer.addClass(this.el.nativeElement, this.align);
     }
     if (hasValue(this.float)) {

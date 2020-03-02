@@ -11,6 +11,8 @@ import { SemanticIconModule } from './modules/elements/icon/icon.module';
 import { SemanticImageModule } from './modules/elements/image/image.module';
 import { SemanticInputModule } from './modules/elements/input/input.module';
 import { SemanticLabelModule } from './modules/elements/label/label.module';
+import { SemanticListModule } from './modules/elements/list/list.module';
+import { MTGCardModule } from './modules/elements/mtg-card/mtg-card.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SemanticLabelModule } from './modules/elements/label/label.module';
     SemanticIconModule,
     SemanticImageModule,
     SemanticInputModule,
-    SemanticLabelModule
+    SemanticLabelModule,
+    SemanticListModule,
+    MTGCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

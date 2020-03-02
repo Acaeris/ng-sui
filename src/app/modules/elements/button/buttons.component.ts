@@ -24,14 +24,13 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: '[sui-buttons], sui-buttons',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './buttons.component.html',
-  host: { 'class' : 'ui buttons' }
+  templateUrl: './buttons.component.html'
 })
 export class SemanticButtonsComponent implements OnChanges {
-  @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
+  @Input() attach?: '' | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
-  @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
-    | "negative" | SemanticSocial;
+  @Input() color?: SemanticColors | 'primary' | 'secondary' | 'positive'
+    | 'negative' | SemanticSocial;
   @Input() compact?: boolean;
   @Input() float?: SemanticFloats;
   @Input() fluid?: boolean;
@@ -42,6 +41,7 @@ export class SemanticButtonsComponent implements OnChanges {
   @Input() toggle?: boolean;
   @Input() vertical?: boolean;
   @Input() width?: SemanticWidths;
+  @HostBinding('class') cssClass = 'ui buttons';
   @HostBinding('class.attached')
   get isAttached() {
     return hasValue(this.attach);
@@ -89,8 +89,8 @@ export class SemanticButtonsComponent implements OnChanges {
     if (hasValue(this.attach)) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
-    var colors: string[] = ("undefined" !== typeof this.color) ? this.color.split(" ") : [];
-    for (var i = 0; i < colors.length; i++) {
+    const colors: string[] = ('undefined' !== typeof this.color) ? this.color.split(' ') : [];
+    for (let i = 0; i < colors.length; i++) {
       this.renderer.addClass(this.el.nativeElement, colors[i]);
     }
     if (hasValue(this.float)) {
@@ -99,7 +99,7 @@ export class SemanticButtonsComponent implements OnChanges {
     if (hasValue(this.size)) {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
-    if ("undefined" !== typeof this.width) {
+    if ('undefined' !== typeof this.width) {
       this.renderer.addClass(this.el.nativeElement, numberToWord(this.width));
     }
   }

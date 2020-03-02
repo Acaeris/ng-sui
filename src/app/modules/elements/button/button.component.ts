@@ -15,8 +15,6 @@ import { SemanticColors } from '../../../defs/colors';
 import { SemanticSocial } from '../../../defs/social';
 import { SemanticFloats } from '../../../defs/floats';
 import { SemanticSizes } from '../../../defs/sizes';
-import { SemanticWidths } from '../../../defs/widths';
-import { numberToWord } from '../../../libs/numberToWord';
 import { hasValue } from '../../../libs/hasValue';
 import { isPresent } from '../../../libs/isPresent';
 
@@ -28,19 +26,18 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: '[sui-button], sui-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './button.component.html',
-  host: { 'class' : 'ui button' }
+  templateUrl: './button.component.html'
 })
 export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() active?: boolean;
   @Input() after?: boolean;
-  @Input() animate?: "" | 'fade' | 'vertical';
-  @Input() attach?: "" | 'left' | 'right' | 'top' | 'bottom';
+  @Input() animate?: '' | 'fade' | 'vertical';
+  @Input() attach?: '' | 'left' | 'right' | 'top' | 'bottom';
   @Input() basic?: boolean;
   @Input() circular?: boolean;
   @Input() child?: boolean;
-  @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
-    | "negative" | SemanticSocial;
+  @Input() color?: SemanticColors | 'primary' | 'secondary' | 'positive'
+    | 'negative' | SemanticSocial;
   @Input() compact?: boolean;
   @Input() disabled?: boolean;
   @Input() dropdown?: boolean;
@@ -54,6 +51,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   @Input() size?: SemanticSizes;
   @Input() toggle?: boolean;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
+  @HostBinding('class') cssClass = 'ui button';
   @HostBinding('class.active') isActive: boolean;
   @HostBinding('class.animated') isAnimated: boolean;
   @HostBinding('class.attached') isAttached: boolean;
@@ -72,7 +70,7 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
-    if ("BUTTON" !== this.el.nativeElement.tagName) {
+    if ('BUTTON' !== this.el.nativeElement.tagName) {
       this.el.nativeElement.tabIndex = 0;
     }
     this.isActive = isPresent(this.active);
@@ -85,16 +83,16 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
     this.isLoading = isPresent(this.loading);
     this.isToggle = isPresent(this.toggle);
     this.isDropdown = isPresent(this.dropdown);
-    this.isAnimated = "undefined" !== typeof this.animate;
+    this.isAnimated = 'undefined' !== typeof this.animate;
     if (hasValue(this.animate)) {
       this.renderer.addClass(this.el.nativeElement, this.animate);
     }
     if (hasValue(this.attach)) {
       this.renderer.addClass(this.el.nativeElement, this.attach);
     }
-    this.isAttached = "undefined" !== typeof this.attach;
+    this.isAttached = 'undefined' !== typeof this.attach;
     if (hasValue(this.color)) {
-      for (var color of this.color.split(" ")) {
+      for (const color of this.color.split(' ')) {
         this.renderer.addClass(this.el.nativeElement, color);
       }
     }
@@ -109,21 +107,21 @@ export class SemanticButtonComponent implements OnChanges, AfterContentChecked {
 
   ngAfterContentChecked() {
     if (this.labels.length > 0) {
-      var labelDirection: string = "left";
+      let labelDirection = 'left';
 
       this.labels.forEach(label => {
         if (isPresent(label.after)) {
-          labelDirection = "right";
+          labelDirection = 'right';
         }
       });
 
       this.renderer.addClass(this.el.nativeElement, labelDirection);
-      this.renderer.addClass(this.el.nativeElement, "labeled");
+      this.renderer.addClass(this.el.nativeElement, 'labeled');
     } else if (hasValue(this.label)) {
       this.renderer.addClass(this.el.nativeElement, this.label);
-      this.renderer.addClass(this.el.nativeElement, "labeled");
+      this.renderer.addClass(this.el.nativeElement, 'labeled');
     }
 
-    this.needsIcon = "" === this.el.nativeElement.innerText && !isPresent(this.child) || hasValue(this.label);
+    this.needsIcon = '' === this.el.nativeElement.innerText && !isPresent(this.child) || hasValue(this.label);
   }
 }

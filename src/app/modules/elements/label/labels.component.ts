@@ -22,19 +22,19 @@ import { hasValue } from '../../../libs/hasValue';
 @Component({
   selector: '[sui-labels], sui-labels',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './labels.component.html',
-  host: { 'class' : 'ui labels' }
+  templateUrl: './labels.component.html'
 })
 export class SemanticLabelsComponent implements OnChanges {
   @Input() circular?: boolean;
   @Input() tag?: boolean;
   @Input() size?: SemanticSizes;
-  @Input() color?: SemanticColors | "primary" | "secondary" | "positive"
-    | "negative" | SemanticSocial;
+  @Input() color?: SemanticColors | 'primary' | 'secondary' | 'positive'
+    | 'negative' | SemanticSocial;
+  @HostBinding('class') cssClass = 'ui labels';
   @HostBinding('class.tag') isTag: boolean;
   @HostBinding('class.circular') isCircular: boolean;
 
-  constructor(private el:ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
     this.isTag = isPresent(this.tag);
@@ -43,7 +43,7 @@ export class SemanticLabelsComponent implements OnChanges {
       this.renderer.addClass(this.el.nativeElement, this.size);
     }
     if (hasValue(this.color)) {
-      for (var color of this.color.split(" ")) {
+      for (const color of this.color.split(' ')) {
         this.renderer.addClass(this.el.nativeElement, color);
       }
     }

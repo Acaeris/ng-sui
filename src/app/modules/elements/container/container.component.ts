@@ -19,13 +19,13 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: '[sui-container], sui-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './container.component.html',
-  host: { 'class' : 'ui container' }
+  templateUrl: './container.component.html'
 })
 export class SemanticContainerComponent implements OnChanges {
   @Input() fluid?: boolean;
   @Input() text?: boolean;
   @Input() textAlign?: SemanticTextAlignments;
+  @HostBinding('class') cssClass = 'ui container';
   @HostBinding('class.aligned')
   get isAligned() {
     return hasValue(this.textAlign);

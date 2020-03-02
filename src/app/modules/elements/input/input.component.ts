@@ -25,8 +25,7 @@ import { hasValue } from '../../../libs/hasValue';
 @Component({
   selector: '[sui-input], sui-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './input.component.html',
-  host: { 'class' : 'ui input' }
+  templateUrl: './input.component.html'
 })
 export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() focus?: boolean;
@@ -45,6 +44,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @Input() size?: SemanticSizes;
   @ContentChildren(SemanticButtonComponent) buttons: QueryList<SemanticButtonComponent>;
   @ContentChildren(SemanticLabelComponent) labels: QueryList<SemanticLabelComponent>;
+  @HostBinding('class') cssClass = 'ui input';
   @HostBinding('class.action') isAction: boolean;
   @HostBinding('class.disabled') isDisabled: boolean;
   @HostBinding('class.error') isError: boolean;
@@ -57,14 +57,14 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
   @HostBinding('class.inverted') isInverted: boolean;
   @HostBinding('class.fluid') isFluid: boolean;
 
-  constructor(private el:ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
     if (!hasValue(this.value)) {
-      this.value = "";
+      this.value = '';
     }
     if (!hasValue(this.type)) {
-      this.type = "text";
+      this.type = 'text';
     }
     this.isDisabled = isPresent(this.disabled);
     this.isError = isPresent(this.error);
@@ -78,7 +78,7 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
         this.renderer.addClass(this.el.nativeElement, this.iconSide);
       }
       // Enforces class order.
-      this.renderer.addClass(this.el.nativeElement, "icon");
+      this.renderer.addClass(this.el.nativeElement, 'icon');
       this.hasIcon = true;
     }
     if (hasValue(this.size)) {
@@ -88,11 +88,11 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
 
   ngAfterContentChecked() {
     if (this.buttons.length > 0) {
-      var actionDirection: string = "left";
+      let actionDirection = 'left';
 
       this.buttons.forEach(button => {
         if (isPresent(button.after)) {
-          actionDirection = "right";
+          actionDirection = 'right';
         }
       });
 
@@ -100,11 +100,11 @@ export class SemanticInputComponent implements OnChanges, AfterContentChecked {
       this.isAction = true;
     }
     if (this.labels.length > 0) {
-      var labelDirection: string = "left";
+      let labelDirection = 'left';
 
       this.labels.forEach(label => {
         if (isPresent(label.after)) {
-          labelDirection = "right";
+          labelDirection = 'right';
         }
         if (isPresent(label.corner)) {
           this.hasCornerLabel = true;

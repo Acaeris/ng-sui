@@ -1,4 +1,6 @@
-<sui-container style="margin-top: 2em;">
+<mtg-card></mtg-card>
+
+<div sui-container style="margin-top: 2em;">
   <h1 sui-header>Ng-Sui Element Tests</h1>
   <h2 sui-header>Button</h2>
   <p>A standard button</p>
@@ -12,19 +14,19 @@
   <sui-button>Cancel</sui-button>
   <h4 sui-header>Animated</h4>
   <p>A button can animate to show hidden content</p>
-  <sui-button animated>
+  <sui-button animate>
     <div class="visible content">Next</div>
     <div class="hidden content">
       <i sui-icon="right arrow"></i>
     </div>
   </sui-button>
-  <sui-button animated="vertical">
+  <sui-button animate="vertical">
     <div class="visible content">Next</div>
     <div class="hidden content">
       <i sui-icon="right arrow"></i>
     </div>
   </sui-button>
-  <sui-button animated="fade">
+  <sui-button animate="fade">
     <div class="visible content">Next</div>
     <div class="hidden content">
       <i sui-icon="right arrow"></i>
@@ -32,22 +34,22 @@
   </sui-button>
   <h4 sui-header>Labelled</h4>
   <p>A button can appear alongside a label.</p>
-  <sui-button label="right">
-    <sui-button icon="heart">Like</sui-button>
-    <a class="ui basic label">2,048</a>
+  <sui-button icon="heart">
+    Like
+    <a sui-label basic after>2,048</a>
   </sui-button>
-  <sui-button label="left">
-    <a class="ui basic right pointing label">2,048</a>
-    <sui-button icon="heart">Like</sui-button>
+  <sui-button icon="heart">
+    <a sui-label basic point="right" before>2,048</a>
+    Like
   </sui-button>
   <p>&nbsp;</p>
-  <sui-button label="right">
-    <sui-button icon="heart" color="red">Like</sui-button>
-    <a class="ui basic red left pointing label">1,048</a>
+  <sui-button icon="heart" color="red">
+    Like
+    <a sui-label after basic color="red" point="left">1,048</a>
   </sui-button>
-  <sui-button label="right">
-    <sui-button basic icon="fork" color="blue">Forks</sui-button>
-    <a class="ui basic left pointing blue label">1,048</a>
+  <sui-button basic icon="fork" color="blue">
+    Forks
+    <a sui-label basic after point="left" color="blue">1,048</a>
   </sui-button>
   <h4 sui-header>Icon</h4>
   <p>A button can have only an icon</p>
@@ -229,27 +231,27 @@
   <sui-button circular color="google plus" icon="google plus"></sui-button>
   <h4 sui-header>Vertically Attached</h4>
   <p>A button can be attachedto the top or bottom of other content</p>
-  <sui-button attached="top">Top</sui-button>
+  <sui-button attach="top">Top</sui-button>
   <div class="ui attached segment">
     <p>This is a test segment for attaching</p>
   </div>
-  <sui-button attached="bottom">Bottom</sui-button>
+  <sui-button attach="bottom">Bottom</sui-button>
   <p>&nbsp;</p>
-  <sui-buttons attached="top">
+  <sui-buttons attach="top">
     <sui-button>One</sui-button>
     <sui-button>Two</sui-button>
   </sui-buttons>
   <div class="ui attached segment">
     <p>This is a test segment for attaching</p>
   </div>
-  <sui-buttons attached="bottom">
+  <sui-buttons attach="bottom">
     <sui-button>One</sui-button>
     <sui-button>Two</sui-button>
   </sui-buttons>
   <h4 sui-header>Horizontally Attached</h4>
   <p>A button can be attached to the left or right of other content.</p>
-  <sui-button attached="left">Left</sui-button>
-  <sui-button attached="right">Right</sui-button>
+  <sui-button attach="left">Left</sui-button>
+  <sui-button attach="right">Right</sui-button>
   <h3 sui-header>Group Variations</h3>
   <h4 sui-header>Vertical Buttons</h4>
   <p>Groups can be formatted to appear vertically</p>
@@ -374,17 +376,11 @@
         <div class="ui form">
           <div class="field">
             <label>Username</label>
-            <div class="ui left icon input">
-              <input type="text" placeholder="Username">
-              <i sui-icon="user"></i>
-            </div>
+            <sui-input icon="user" iconSide="left" placeholder="Username"></sui-input>
           </div>
           <div class="field">
             <label>Password</label>
-            <div class="ui left icon input">
-              <input type="password">
-              <i sui-icon="lock"></i>
-            </div>
+            <sui-input icon="lock" iconSide="left" type="password"></sui-input>
           </div>
           <sui-button color="blue">Login</sui-button>
         </div>
@@ -398,11 +394,9 @@
   <h4 sui-header>Horizontal Divider</h4>
   <p>A divider can segment content horizontally</p>
   <div class="ui center aligned basic segment">
-    <div class="ui left icon action input">
-      <i sui-icon="search"></i>
-      <input type="text" placeholder="Order #">
-      <sui-button color="blue">Search</sui-button>
-    </div>
+    <sui-input placeholder="Order #" icon="search" iconSide="left">
+      <sui-button after color="blue">Search</sui-button>
+    </sui-input>
     <div sui-divider label="Or"></div>
     <sui-button label="left" icon="add" color="teal">Create New Order</sui-button>
   </div>
@@ -480,8 +474,8 @@
   <p>$10.99</p>
   <h3 sui-header>Content</h3>
   <h4 sui-header>Image</h4>
-  <h2 sui-header image="/images/icons/school.png">Learn More</h2>
-  <h2 sui-header image="/images/icons/plugin.png" sub="Check out our plug-in marketplace">Plugins</h2>
+  <h2 sui-header image="assets/images/wireframe/image.png">Learn More</h2>
+  <h2 sui-header image="assets/images/wireframe/image.png" sub="Check out our plug-in marketplace">Plugins</h2>
   <h4 sui-header>Icon</h4>
   <p>A header may contain an icon</p>
   <h2 sui-header icon="plug" bulleted>Uptime Guarantee</h2>
@@ -549,17 +543,625 @@
   <h4 sui-header>Inverted</h4>
   <p>A header can have its colors inverted for contrast</p>
   <div class="ui inverted segment">
-  <h4 sui-header inverted color="red">Red</h4>
-  <h4 sui-header inverted color="orange">Orange</h4>
-  <h4 sui-header inverted color="yellow">Yellow</h4>
-  <h4 sui-header inverted color="olive">Olive</h4>
-  <h4 sui-header inverted color="green">Green</h4>
-  <h4 sui-header inverted color="teal">Teal</h4>
-  <h4 sui-header inverted color="blue">Blue</h4>
-  <h4 sui-header inverted color="purple">Purple</h4>
-  <h4 sui-header inverted color="violet">Violet</h4>
-  <h4 sui-header inverted color="pink">Pink</h4>
-  <h4 sui-header inverted color="brown">Brown</h4>
-  <h4 sui-header inverted color="grey">Grey</h4>
+    <h4 sui-header inverted color="red">Red</h4>
+    <h4 sui-header inverted color="orange">Orange</h4>
+    <h4 sui-header inverted color="yellow">Yellow</h4>
+    <h4 sui-header inverted color="olive">Olive</h4>
+    <h4 sui-header inverted color="green">Green</h4>
+    <h4 sui-header inverted color="teal">Teal</h4>
+    <h4 sui-header inverted color="blue">Blue</h4>
+    <h4 sui-header inverted color="purple">Purple</h4>
+    <h4 sui-header inverted color="violet">Violet</h4>
+    <h4 sui-header inverted color="pink">Pink</h4>
+    <h4 sui-header inverted color="brown">Brown</h4>
+    <h4 sui-header inverted color="grey">Grey</h4>
   </div>
-</sui-container>
+  <h2 sui-header>Icon</h2>
+  <p>An icon set contains an arbitrary number of glyphs</p>
+  <i sui-icon="blind"></i>
+  <i sui-icon="braille"></i>
+  <i sui-icon="deaf"></i>
+  <h2 sui-header>Image</h2>
+  <p>An image</p>
+  <img sui-img url="assets/images/wireframe/image.png" size="small">
+  <p>&nbsp;</p>
+  <sui-img size="small" url="assets/images/wireframe/image.png"></sui-img>
+  <p>&nbsp;</p>
+  <sui-svg size="small">
+    <svg width="150" width="150">
+      <image xlink:href="assets/images/wireframe/image.png" x="0" y="0" width="100%" height="100%"></image>
+    </svg>
+  </sui-svg>
+  <h3 sui-header>States</h3>
+  <h4 sui-header>Hidden</h4>
+  <p>An image can be hidden</p>
+  <img sui-img src="assets/images/wireframe/image.png" hidden>
+  <h4 sui-header>Disabled</h4>
+  <p>An image can show that it is disabled and cannot be selected</p>
+  <img sui-img src="assets/images/wireframe/image.png" disabled>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Avatar</h4>
+  <p>An image may be formatted to appear inline with text as an avatar</p>
+  <img sui-img avatar url="assets/images/wireframe/image.png">
+  <span>Username</span>
+  <h4 sui-header>Bordered</h4>
+  <img sui-img bordered size="medium" src="assets/images/wireframe/image.png">
+  <h4 sui-header>Fluid</h4>
+  <p>An image can take up the width of its container</p>
+  <img sui-img fluid url="assets/images/wireframe/image.png">
+  <h4 sui-header>Rounded</h4>
+  <p>An image may appear rounded</p>
+  <img sui-img size="medium" rounded src="assets/images/wireframe/image.png">
+  <h4 sui-header>Circular</h4>
+  <p>An image may appear circular</p>
+  <img sui-img size="medium" circular src="assets/images/wireframe/image.png">
+  <h4 sui-header>Vertically Aligned</h4>
+  <p>An image can specify its vertical alignment</p>
+  <img sui-img align="top" size="tiny" src="assets/images/wireframe/image.png">
+  <span>Top Aligned</span>
+  <div sui-divider></div>
+  <img sui-img align="middle" size="tiny" src="assets/images/wireframe/image.png">
+  <span>Middle Aligned</span>
+  <div sui-divider></div>
+  <img sui-img align="bottom" size="tiny" src="assets/images/wireframe/image.png">
+  <span>Bottom Aligned</span>
+  <h4 sui-header>Centered</h4>
+  <p>An image can appear centered in a content block</p>
+  <div class="ui segment">
+    <img sui-img centered size="medium" src="assets/images/wireframe/image.png">
+    <p>Some text</p>
+  </div>
+  <h4 sui-header>Spaced</h4>
+  <p>An image can specify that it needs an additional spacing to separate it from nearby content</p>
+  <div class="ui segment">
+    <p>Some text <img sui-img spaced size="mini" src="assets/images/wireframe/image.png"> with an image placed inside it</p>
+  </div>
+  <h4 sui-header>Floated</h4>
+  <p>An image can sit t the left or right of other content</p>
+  <div class="ui clearing segment">
+    <img sui-img float="left" size="small" src="assets/images/wireframe/image.png">
+    <p>This contains a bunch of text and stuff and blah blah</p>
+    <img sui-img float="right" size="small" src="assets/images/wireframe/image.png">
+    <p>This contains a bunch of text and stuff and blah blah</p>
+  </div>
+  <h4 sui-header>Size</h4>
+  <p>An image may appear at different sizes</p>
+  <img sui-img size="mini" src="assets/images/wireframe/image.png">
+  <img sui-img size="tiny" src="assets/images/wireframe/image.png">
+  <img sui-img size="small" src="assets/images/wireframe/image.png">
+  <img sui-img size="medium" src="assets/images/wireframe/image.png">
+  <img sui-img size="large" src="assets/images/wireframe/image.png">
+  <img sui-img size="big" src="assets/images/wireframe/image.png">
+  <img sui-img size="huge" src="assets/images/wireframe/image.png">
+  <img sui-img size="massive" src="assets/images/wireframe/image.png">
+  <h3 sui-header>Groups</h3>
+  <h4 sui-header>Size</h4>
+  <sui-images size="mini">
+    <img sui-img src="assets/images/wireframe/image.png">
+    <img sui-img src="assets/images/wireframe/image.png">
+    <img sui-img src="assets/images/wireframe/image.png">
+  </sui-images>
+  <p>&nbsp;</p>
+  <sui-images size="small">
+    <img sui-img src="assets/images/wireframe/image.png">
+    <img sui-img src="assets/images/wireframe/image.png">
+    <img sui-img src="assets/images/wireframe/image.png">
+  </sui-images>
+  <h2 sui-header>Input</h2>
+  <p>A standard input</p>
+  <sui-input placeholder="Search..."></sui-input>
+  <h3 sui-header>States</h3>
+  <h4 sui-header>Focus</h4>
+  <p>An input field can show a user is currently interacting with it</p>
+  <sui-input focus placeholder="Search..."></sui-input>
+  <h4 sui-header>Loading</h4>
+  <sui-input loading placeholder="Search..." icon="search" iconSide="left"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input loading placeholder="Search..." icon="search"></sui-input>
+  <h4 sui-header>Disabled</h4>
+  <p>An input field can show that it is disabled</p>
+  <sui-input disabled placeholder="Search..."></sui-input>
+  <p>&nbsp;</p>
+  <sui-input disabled placeholder="Search..." icon="search"></sui-input>
+  <h4 sui-header>Error</h4>
+  <p>An input field can show the data contains errors</p>
+  <sui-input error placeholder="Search..."></sui-input>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Icon</h4>
+  <p>An input can be formatted with an icon</p>
+  <sui-input placeholder="Search..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search users..." icon="users" iconSide="left"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search..." icon="circular search link"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search..." icon="inverted circular search link"></sui-input>
+  <h4 sui-header>Label</h4>
+  <p>An input can be formatted with a label</p>
+  <sui-input placeholder="mysite.com">
+    <sui-label before>Http://</sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Find domain">
+    <sui-label dropdown after>
+      <div class="text">.com</div>
+      <i sui-icon="dropdown"></i>
+      <div class="menu">
+        <div class="item">.com</div>
+        <div class="item">.net</div>
+        <div class="item">.org</div>
+      </div>
+    </sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Enter weight...">
+    <sui-label basic after>kg</sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Amount">
+    <label before for="amount" sui-label>$</label>
+    <sui-label after basic>.00</sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Enter tags" icon="tags" iconSide="left">
+    <sui-label tag after>Add Tag</sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search...">
+    <sui-label icon="asterisk" corner before></sui-label>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input label="right" placeholder="Search...">
+    <sui-label icon="asterisk" corner after></sui-label>
+  </sui-input>
+  <h4 sui-header>Action</h4>
+  <p>An input can be formatted to alert the user to an action they may perform</p>
+  <sui-input placeholder="Search...">
+    <sui-button after>Search</sui-button>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input value="$52.03">
+    <sui-button before color="teal" icon="cart" label="left">Checkout</sui-button>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search..." icon="search" iconSide="left">
+    <sui-button after basic floating dropdown>
+      <div class="text">This Page</div>
+      <i sui-icon="dropdown"></i>
+      <div class="menu">
+        <div class="item">This Organization</div>
+        <div class="item">Entire Site</div>
+      </div>
+    </sui-button>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search...">
+    <select after class="ui compact selection dropdown">
+      <option value="all">All</option>
+      <option selected="" value="articles">Articles</option>
+      <option value="products">Products</option>
+    </select>
+    <sui-button after>Search</sui-button>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input value="http://www.short.url/c0opq">
+    <sui-button after color="teal" icon="copy" label="right">Copy</sui-button>
+  </sui-input>
+  <p>&nbsp;</p>
+  <sui-input placeholder="Search...">
+    <sui-button after icon="search"></sui-button>
+  </sui-input>
+  <h4 sui-header>Transparent</h4>
+  <p>A transparent input has no background</p>
+  <sui-input transparent placeholder="Search..."></sui-input>
+  <p>&nbsp;</p>
+  <sui-input transparent icon="search" placeholder="Search..."></sui-input>
+  <p>&nbsp;</p>
+  <sui-input transparent icon="search" iconSide="left" placeholder="Search..."></sui-input>
+  <h4 sui-header>Inverted</h4>
+  <div class="ui inverted segment">
+    <sui-input inverted placeholder="Search..."></sui-input>
+    <div sui-divider inverted></div>
+    <sui-input inverted icon="search" iconSide="left" placeholder="Search..."></sui-input>
+    <div sui-divider inverted></div>
+    <sui-input inverted transparent icon="search" placeholder="Search..."></sui-input>
+  </div>
+  <h4 sui-header>Fluid</h4>
+  <p>An input can take the size of its container</p>
+  <sui-input fluid placeholder="Search a very wide input..." icon="search"></sui-input>
+  <sui-input fluid placeholder="Search...">
+    <sui-button after>Search</sui-button>
+  </sui-input>
+  <h4 sui-header>Size</h4>
+  <p>An input can vary in size</p>
+  <sui-input size="mini" placeholder="Search mini..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input size="small" placeholder="Search small..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input size="large" placeholder="Search large..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input size="big" placeholder="Search big..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input size="huge" placeholder="Search huge..." icon="search"></sui-input>
+  <p>&nbsp;</p>
+  <sui-input size="massive" placeholder="Search massive..." icon="search"></sui-input>
+  <h2 sui-header>Label</h2>
+  <p>A label</p>
+  <sui-label icon="mail">23</sui-label>
+  <h4 sui-header>Image</h4>
+  <p>A label can be formatted to emphasize an image</p>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Joe
+  </sui-label>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Elliot
+  </sui-label>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Stevie
+  </sui-label>
+  <p>&nbsp;</p>
+  <sui-label color="blue">
+    <img src="assets/images/wireframe/image.png">
+    Veronika
+    <div class="detail">Friend</div>
+  </sui-label>
+  <sui-label color="teal">
+    <img src="assets/images/wireframe/image.png">
+    Veronika
+    <div class="detail">Student</div>
+  </sui-label>
+  <sui-label color="yellow">
+    <img src="assets/images/wireframe/image.png">
+    Helen
+    <div class="detail">Co-worker</div>
+  </sui-label>
+  <p>&nbsp;</p>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Adrienne
+    <i sui-icon="delete"></i>
+  </sui-label>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Zoe
+    <i sui-icon="delete"></i>
+  </sui-label>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Nan
+    <i sui-icon="delete"></i>
+  </sui-label>
+  <h4 sui-header>Pointing</h4>
+  <p>A label can point to content next to it</p>
+  <form class="ui fluid form">
+    <div class="field">
+      <sui-input placeholder="First name"></sui-input>
+      <sui-label point="above">Please enter a value</sui-label>
+    </div>
+    <div sui-divider></div>
+    <div class="field">
+      <sui-label point="below">Please enter a value</sui-label>
+      <sui-input placeholder="Last name"></sui-input>
+    </div>
+    <div sui-divider></div>
+    <div class="inline field">
+      <sui-input placeholder="Username"></sui-input>
+      <sui-label point="left">That name is taken!</sui-label>
+    </div>
+    <div sui-divider></div>
+    <div class="inline field">
+      <sui-label point="right">Your password must be 6 characters or more</sui-label>
+      <sui-input type="password"></sui-input>
+    </div>
+  </form>
+  <p>&nbsp;</p>
+  <form class="ui fluid form">
+    <div class="field">
+      <sui-input placeholder="First name"></sui-input>
+      <sui-label basic color="red" point="above">Please enter a value</sui-label>
+    </div>
+    <div sui-divider></div>
+    <div class="field">
+      <sui-label basic color="red" point="below">Please enter a value</sui-label>
+      <sui-input placeholder="Last name"></sui-input>
+    </div>
+    <div sui-divider></div>
+    <div class="inline field">
+      <sui-input placeholder="Username"></sui-input>
+      <sui-label basic color="red" point="left">That name is taken!</sui-label>
+    </div>
+    <div sui-divider></div>
+    <div class="inline field">
+      <sui-label basic color="red" point="right">Your password must be 6 characters or more</sui-label>
+      <sui-input type="password"></sui-input>
+    </div>
+  </form>
+  <h4 sui-header>Corner</h4>
+  <p>A label can position itself in the corner of an element</p>
+  <div class="ui two column grid">
+    <div class="column">
+      <sui-img fluid src="assets/images/wireframe/image.png">
+        <sui-label corner before icon="heart"></sui-label>
+      </sui-img>
+    </div>
+    <div class="column">
+      <sui-img fluid src="assets/images/wireframe/image.png">
+        <sui-label corner after icon="save" color="red"></sui-label>
+      </sui-img>
+    </div>
+  </div>
+  <h4 sui-header>Tag</h4>
+  <p>A label can appear as a tag</p>
+  <sui-label tag>New</sui-label>
+  <sui-label tag color="red">Upcoming</sui-label>
+  <sui-label tag color="teal">Featured</sui-label>
+  <h4 sui-header>Ribbon</h4>
+  <p>A label can appear as a ribbon attaching itself to an element</p>
+  <div class="ui two column grid">
+    <div class="column">
+      <div class="ui raised segment">
+        <sui-label color="red" ribbon="left">Overview</sui-label>
+        <span>Account Details</span>
+        <p></p>
+        <sui-label color="blue" ribbon="left">Community</sui-label> User Reviews
+        <p></p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui raised segment">
+        <sui-label color="orange" ribbon="right">Specs</sui-label>
+        <p></p>
+        <sui-label color="blue" ribbon="right">Reviews</sui-label>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <div class="ui two column grid">
+    <div class="column">
+      <sui-img fluid src="assets/images/wireframe/image.png">
+        <sui-label color="black" ribbon="left" icon="hotel">Hotel</sui-label>
+      </sui-img>
+    </div>
+    <div class="column">
+      <sui-img fluid src="assets/images/wireframe/image.png">
+        <sui-label color="blue" ribbon="left" icon="spoon">Food</sui-label>
+      </sui-img>
+    </div>
+  </div>
+  <h4 sui-header>Attached</h4>
+  <p>A label can attach to a content segment</p>
+  <div class="ui three column grid">
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="top">HTML</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="bottom">CSS</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="top right">Code</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+  </div>
+  <div class="ui three column grid">
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="top left">View</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="bottom left">User View</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui segment">
+        <sui-label attach="bottom right">Admin View</sui-label>
+        <p>Example text</p>
+      </div>
+    </div>
+  </div>
+  <h4 sui-header>Horizontal</h4>
+  <p>A horizontal label is formatted to label content along-side it horizontally</p>
+  <div class="ui divided selection list">
+    <a class="item">
+      <sui-label horizontal color="red">Fruit</sui-label>
+      Kumquats
+    </a>
+    <a class="item">
+      <sui-label horizontal color="purple">Candy</sui-label>
+      Ice Cream
+    </a>
+    <a class="item">
+      <sui-label horizontal color="red">Fruit</sui-label>
+      Orange
+    </a>
+    <a class="item">
+      <sui-label horizontal>Dog</sui-label>
+      Poodle
+    </a>
+  </div>
+  <h4 sui-header>Floating</h4>
+  <p>A label can float above another element</p>
+  <div class="ui compact menu">
+    <a class="item">
+      <i sui-icon="mail"></i> Messages
+      <sui-label floating color="red">22</sui-label>
+    </a>
+    <a class="item">
+      <i sui-icon="users"></i> Friends
+      <sui-label floating color="teal">22</sui-label>
+    </a>
+  </div>
+  <h3 sui-header>Content</h3>
+  <h4 sui-header>Detail</h4>
+  <p>A label can contain a detail</p>
+  <sui-label>
+    Dogs
+    <div class="detail">214</div>
+  </sui-label>
+  <h4 sui-header>Icon</h4>
+  <p>A label can include an icon</p>
+  <sui-label icon="mail">Mail</sui-label>
+  <sui-label icon="delete" iconSide="right">Tag</sui-label>
+  <h4 sui-header>Image</h4>
+  <p>A label can include an image</p>
+  <sui-label>
+    <img sui-img src="assets/images/wireframe/image.png" size="small" avatar spaced>
+    Elliot
+  </sui-label>
+  <sui-label>
+    <img src="assets/images/wireframe/image.png">
+    Stevie
+  </sui-label>
+  <h4 sui-header>Link</h4>
+  <p>A label can be a link or contain an item that links</p>
+  <a sui-label icon="mail">23</a>
+  <p>&nbsp;</p>
+  <sui-label icon="mail">
+    23
+    <a class="detail">View Mail</a>
+  </sui-label>
+  <h3 sui-header>Variations</h3>
+  <h4 sui-header>Circular</h4>
+  <p>A label can be circular</p>
+  <sui-label circular color="red">2</sui-label>
+  <sui-label circular color="orange">2</sui-label>
+  <sui-label circular color="yellow">2</sui-label>
+  <sui-label circular color="olive">2</sui-label>
+  <sui-label circular color="green">2</sui-label>
+  <sui-label circular color="teal">2</sui-label>
+  <sui-label circular color="blue">2</sui-label>
+  <sui-label circular color="violet">2</sui-label>
+  <sui-label circular color="purple">2</sui-label>
+  <sui-label circular color="pink">2</sui-label>
+  <sui-label circular color="brown">2</sui-label>
+  <sui-label circular color="grey">2</sui-label>
+  <sui-label circular color="black">2</sui-label>
+  <p>&nbsp;</p>
+  <sui-label circular empty color="red"></sui-label>
+  <sui-label circular empty color="orange"></sui-label>
+  <sui-label circular empty color="yellow"></sui-label>
+  <sui-label circular empty color="olive"></sui-label>
+  <sui-label circular empty color="green"></sui-label>
+  <sui-label circular empty color="teal"></sui-label>
+  <sui-label circular empty color="blue"></sui-label>
+  <sui-label circular empty color="violet"></sui-label>
+  <sui-label circular empty color="purple"></sui-label>
+  <sui-label circular empty color="pink"></sui-label>
+  <sui-label circular empty color="brown"></sui-label>
+  <sui-label circular empty color="grey"></sui-label>
+  <sui-label circular empty color="black"></sui-label>
+  <h4 sui-header>Basic</h4>
+  <p>A label can reduce its complexity</p>
+  <sui-label basic>Basic</sui-label>
+  <sui-label basic point="above">Pointing</sui-label>
+  <sui-label basic>
+    <img src="assets/images/wireframe/image.png">
+    Elliot
+  </sui-label>
+  <sui-label basic color="red" point="above">Red Pointing</sui-label>
+  <sui-label basic color="blue">Blue</sui-label>
+  <h4 sui-header>Colored</h4>
+  <p>A label can have different colors</p>
+  <sui-label color="red">Red</sui-label>
+  <sui-label color="orange">Orange</sui-label>
+  <sui-label color="yellow">Yellow</sui-label>
+  <sui-label color="olive">Olive</sui-label>
+  <sui-label color="green">Green</sui-label>
+  <sui-label color="teal">Teal</sui-label>
+  <sui-label color="blue">Blue</sui-label>
+  <sui-label color="violet">Violet</sui-label>
+  <sui-label color="purple">Purple</sui-label>
+  <sui-label color="pink">Pink</sui-label>
+  <sui-label color="brown">Brown</sui-label>
+  <sui-label color="grey">Grey</sui-label>
+  <sui-label color="black">Black</sui-label>
+  <h4 sui-header>Size</h4>
+  <p>A label can be small or large</p>
+  <a sui-label size="mini">Mini</a>
+  <a sui-label size="tiny">Tiny</a>
+  <a sui-label size="small">Small</a>
+  <a sui-label size="medium">Medium</a>
+  <a sui-label size="large">Large</a>
+  <a sui-label size="big">Big</a>
+  <a sui-label size="huge">Huge</a>
+  <a sui-label size="massive">Massive</a>
+  <h3 sui-header>Groups</h3>
+  <h4 sui-header>Group Size</h4>
+  <p>Labels can share sizes together</p>
+  <div sui-labels size="huge">
+    <a sui-label>Fun</a>
+    <a sui-label>Happy</a>
+    <a sui-label>Smart</a>
+    <a sui-label>Witty</a>
+  </div>
+  <h4 sui-header>Colored Group</h4>
+  <p>Labels can share colors together</p>
+  <div sui-labels color="blue">
+    <a sui-label icon="close" iconSide="right">Fun</a>
+    <a sui-label>
+      Happy
+      <div class="detail">22</div>
+    </a>
+    <a sui-label>Smart</a>
+    <a sui-label>Insane</a>
+    <a sui-label>Exciting</a>
+  </div>
+  <h4 sui-header>Tag Group</h4>
+  <p>Labels can share tag formatting</p>
+  <div sui-labels tag>
+    <a sui-label>$10.00</a>
+    <a sui-label>$19.99</a>
+    <a sui-label>$24.99</a>
+    <a sui-label>$30.99</a>
+    <a sui-label>$10.25</a>
+  </div>
+  <h4 sui-header>Circular Group</h4>
+  <p>Labels can share shapes</p>
+  <div sui-labels circular>
+    <a sui-label>11</a>
+    <a sui-label>22</a>
+    <a sui-label>33</a>
+    <a sui-label>44</a>
+    <a sui-label>141</a>
+  </div>
+  <h2 sui-header>List</h2>
+  <p>A list groups related content</p>
+  <sui-list>
+    <div class="item">Apples</div>
+    <div class="item">Pears</div>
+    <div class="item">Oranges</div>
+  </sui-list>
+  <p>&nbsp;</p>
+  <sui-list>
+    <div class="item">
+      <i sui-icon="users"></i>
+      <div class="content">Semantic UI</div>
+    </div>
+    <div class="item">
+      <i sui-icon="marker"></i>
+      <div class="content">New York, NY</div>
+    </div>
+    <div class="item">
+      <i sui-icon="mail"></i>
+      <div class="content"><a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a></div>
+    </div>
+    <div class="item">
+      <i sui-icon="linkify"></i>
+      <div class="content"><a href="http://www.semantic-ui.com">semantic-ui.com</a></div>
+    </div>
+  </sui-list>
+</div>
