@@ -1,3 +1,303 @@
+// Sizing
+$card-width: 262px; //525px;
+$card-height: 375px; //750px;
+$card-border-width: 6px;
+
+$card-blue: rgba(84, 200, 255, 1);
+$card-pale-blue: rgba(218,243,255,1);
+$card-red: rgba(255, 90, 49, 1);
+$card-pale-red: rgba(255,214,204,1);
+$card-green: rgba(23, 156, 77, 1);
+$card-pale-green: rgba(208,235,219,1);
+
 .mtg-card {
   font: 16px Chronotype;
+  width: $card-width;
+  height: $card-height;
+  background: #000000;
+  border-radius: 11px;
+  display: flex;
+  flex-flow: column;
+  margin: 16px;
+
+  .text {
+    margin: 4px 8px;
+  }
+
+  .header {
+    font: 16px handy00;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    margin: $card-border-width $card-border-width 0 $card-border-width;
+    border-radius: 6px 6px 0 0;
+
+    .row {
+      display: flex;
+    }
+
+    .text {
+      flex-grow: 1;
+    }
+
+    .mana {
+      margin: 5px 6px;
+      display: flex;
+
+      div {
+        border-radius: 7px;
+        width: 14px;
+        height: 14px;
+        margin: 0 1px 0 0;
+        background-position: -3px;
+        background-size: 20px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+
+        &.colorless {
+          font-family: Chronotype;
+          padding: 2px 0 0 0;
+          color: #000000;
+          text-shadow: none;
+          background: #f1f1f1;
+          text-align: center;
+        }
+
+        &.blue {
+          background-image: url(assets/images/blue.png);
+        }
+
+        &.red {
+          background-image: url(assets/images/red.png);
+        }
+
+        &.green {
+          background-image: url(assets/images/green.png);
+        }
+      }
+    }
+  }
+
+  .full-art {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    border-radius: 0 0 6px 6px;
+    margin: 0 $card-border-width $card-border-width $card-border-width;
+
+    .type {
+      margin: 1px 0;
+    }
+
+    .rule {
+      margin: 0;
+
+      &.last {
+        margin: 0;
+      }
+    }
+  }
+
+  .art, .fill-col {
+    flex-grow: 1;
+  }
+
+  .type {
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    margin: 1px $card-border-width;
+  }
+
+  .rule {
+    margin: 0 $card-border-width;
+
+    .colorless {
+      font-family: Chronotype;
+      padding: 2px 0 0 1px;
+      color: #000000;
+      text-shadow: none;
+      background: #f1f1f1;
+      text-align: center;
+    }
+
+    .white, .blue, .black, .red, .green, .colorless {
+      display: inline-block;
+      background-position: -3px;
+      background-size: 20px;
+      border-radius: 7px;
+      width: 14px;
+      height: 14px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    .blue {
+      background-image: url(assets/images/blue.png);
+    }
+
+    .red {
+      background-image: url(assets/images/red.png);
+    }
+
+    .green {
+      background-image: url(assets/images/green.png);
+    }
+
+    &.last {
+      margin-bottom: $card-border-width;
+      border-radius: 0 0 6px 6px;
+
+      .level-up {
+        .level {
+          border-radius: 0 4px 4px 4px;
+          text-align: center;
+        }
+
+        .pt {
+          border-radius: 4px 0 4px 4px;
+        }
+      }
+    }
+
+    .level-up {
+      display: flex;
+      align-items: center;
+
+      .level {
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        border-radius: 0 4px 4px 0;
+        margin: 1px 0;
+      }
+
+      .pt {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 4px 0 0 4px;
+        margin: 1px 0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+    }
+  }
+
+  &.blue {
+    .header, .type {
+      background: $card-blue;
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: $card-pale-blue;
+    }
+
+    .full-art {
+      .type {
+        background: rgba($card-blue, 0.5);
+      }
+
+      .rule {
+        background: rgba($card-pale-blue, 0.5);
+      }
+    }
+  }
+
+  &.red {
+    .header, .type {
+      background: $card-red;
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: $card-pale-red;
+    }
+
+    .full-art {
+      .type {
+        background: rgba($card-red, 0.5);
+      }
+
+      .rule {
+        background: rgba($card-pale-red, 0.5);
+      }
+    }
+  }
+
+  &.green {
+    .header, .type {
+      background: $card-green;
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: $card-pale-green;
+    }
+
+    .full-art {
+      .type{
+        background: rgba($card-green, 0.5);
+      }
+
+      .rule {
+        background: rgba($card-pale-green, 0.5);
+      }
+    }
+  }
+
+  &.izzet {
+    .header, .type {
+      background: linear-gradient(125deg, $card-blue 0%, $card-red 100%);
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: linear-gradient(125deg, $card-pale-blue 0%, $card-pale-red 100%);
+    }
+
+    .full-art {
+      .type {
+        background: linear-gradient(125deg, rgba($card-blue, 0.5) 0%, rgba($card-red, 0.5), 100%);
+      }
+
+      .rule {
+        background: linear-gradient(125deg, rgba($card-pale-blue, 0.5) 0%, rgba($card-pale-red, 0.5), 100%);
+      }
+    }
+  }
+
+  &.simic {
+    .header, .type {
+      background: linear-gradient(125deg, $card-blue 0, $card-green 100%);
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: linear-gradient(125deg, $card-pale-blue 0%, $card-pale-green 100%);
+    }
+
+    .full-art {
+      .type {
+        background: linear-gradient(125deg, rgba($card-blue, 0.5) 0%, rgba($card-green, 0.5), 100%);
+      }
+
+      .rule {
+        background: linear-gradient(125deg, rgba($card-pale-blue, 0.5) 0%, rgba($card-pale-green, 0.5), 100%);
+      }
+    }
+  }
+
+  &.gruul {
+    .header, .type {
+      background: linear-gradient(125deg, $card-red 0, $card-green 100%);
+      color: #f1f1f1;
+    }
+
+    .rule {
+      background: linear-gradient(125deg, $card-pale-red 0%, $card-pale-green 100%);
+    }
+
+    .full-art {
+      .type {
+        background: linear-gradient(125deg, rgba($card-red, 0.5) 0%, rgba($card-green, 0.5), 100%);
+      }
+
+      .rule {
+        background: linear-gradient(125deg, rgba($card-pale-red, 0.5) 0%, rgba($card-pale-green, 0.5), 100%);
+      }
+    }
+  }
 }

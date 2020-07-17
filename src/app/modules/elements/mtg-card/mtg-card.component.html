@@ -1,3 +1,29 @@
+<div class="mtg-card {{ color }}">
+  <div class="header">
+    <div class="row">
+      <div class="text">{{ name }}</div>
+      <div *ngIf="manaCost" class="mana" innerHtml="{{ manaCost }}"></div>
+    </div>
+  </div>
+  <div class="art"></div>
+  <div class="type">
+    <div class="text">{{ type }}</div>
+  </div>
+  <div class="rule" *ngFor="let rule of rulesOut">
+    <div class="text" innerHtml="{{ rule }}"></div>
+  </div>
+  <div class="rule last" *ngIf="stats">
+    <div class="level-up">
+      <div class="fill-col">
+        <div class="text"></div>
+      </div>
+      <div class="pt">
+        <div class="text">{{ stats }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="mtg-card blue">
   <div class="header">
     <div class="row">
@@ -72,69 +98,6 @@
         <div class="pt">
           <div class="text">2/5</div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="mtg-card blue-red">
-  <div class="header">
-    <div class="row">
-      <div class="text">Goblin Electromancer</div>
-      <div class="mana">
-        <div class="blue"></div>
-        <div class="red"></div>
-      </div>
-    </div>
-  </div>
-  <div class="art"></div>
-  <div class="type">
-    <div class="text">Creature - Goblin Wizard</div>
-  </div>
-  <div class="rule">
-    <div class="text">Instant and sorcery spells you cast cost <div style="display: inline-block;">
-      <div class="mana" style="margin: 0;">
-        <div class="colorless">1</div>
-      </div>
-    </div> less to cast.</div>
-  </div>
-  <div class="rule last">
-    <div class="level-up">
-      <div class="fill-col">
-        <div class="text"></div>
-      </div>
-      <div class="pt">
-        <div class="text">2/2</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="mtg-card green">
-  <div class="header">
-    <div class="row">
-      <div class="text">Eternal Witness</div>
-      <div class="mana">
-        <div class="colorless">1</div>
-        <div class="green"></div>
-        <div class="green"></div>
-      </div>
-    </div>
-  </div>
-  <div class="art"></div>
-  <div class="type">
-    <div class="text">Creature - Human Shaman</div>
-  </div>
-  <div class="rule">
-    <div class="text">When Eternal Witness enters the battlefield, you may return target card from your graveyard to your hand.</div>
-  </div>
-  <div class="rule last">
-    <div class="level-up">
-      <div class="fill-col">
-        <div class="text"></div>
-      </div>
-      <div class="pt">
-        <div class="text">2/1</div>
       </div>
     </div>
   </div>

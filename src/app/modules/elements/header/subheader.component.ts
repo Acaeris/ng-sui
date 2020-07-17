@@ -16,7 +16,7 @@ import { isPresent } from '../../../libs/isPresent';
 @Component({
   selector: '[sui-subheader], sui-subheader',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './header.component.html'
+  templateUrl: './subheader.component.html'
 })
 export class SemanticSubheaderComponent implements OnChanges {
   @Input() icon?: string;
